@@ -1,7 +1,9 @@
+import { CurrentScreen } from "./screens";
+
 import "./App.scss";
 
 function App() {
-  return <div>App</div>;
+  return <CurrentScreen />;
 }
 
 export default App;
