@@ -1,24 +1,29 @@
 import listOfWords from "../data/secretWords.json";
 import difficulties from "../data/difficulties.json";
+import haikus from "../data/haikus.json";
 import { useState, createContext } from "react";
+import { extractRandomString } from "../helpers";
 
 const initialValues: GameContextType = {
   currentScreen: "Error",
   setCurrentScreen: () => {},
-  changeScreen: () => {},
   secretWord: "",
   setSecretWord: () => {},
   movesCount: 0,
   setMovesCount: () => {},
-  theme: [],
-  setTheme: () => {},
-  allThemes: listOfWords,
-  generalTheme: Object.values(listOfWords).flat(),
+  wordList: [],
+  setWordList: () => {},
+  allWordLists: listOfWords,
+  generalWordList: Object.values(listOfWords).flat(),
+  currentHaiku: "",
+  setCurrentHaiku: () => {},
   isGameOn: false,
   setIsGameOn: () => {},
-  guessedWord: "",
-  setGuessedWord: () => {},
   levels: difficulties,
+  selectedTheme: "",
+  setSelectedTheme: () => {},
+  gameResult: "none",
+  setGameResult: () => {},
 };
 
 const GameContext = createContext<GameContextType>(initialValues);
@@ -28,21 +33,21 @@ const GameContextProvider: React.FC<GameContextProviderProps> = ({
 }) => {
   const [currentScreen, setCurrentScreen] = useState("New Game");
   const [secretWord, setSecretWord] = useState("cat");
-  const [theme, setTheme] = useState(initialValues.generalTheme);
+  const [wordList, setWordList] = useState(initialValues.generalWordList);
   const [movesCount, setMovesCount] = useState(initialValues.levels.easy);
-  const [guessedWord, setGuessedWord] = useState("");
+  const [selectedTheme, setSelectedTheme] = useState("general");
+  const [gameResult, setGameResult] = useState("none");
+  const [currentHaiku, setCurrentHaiku] = useState(
+    extractRandomString(haikus.newGame)
+  );
   const [isGameOn, setIsGameOn] = useState(false);
-
-  const changeScreen = (screen: string) => {
-    setCurrentScreen(screen);
-  };
 
   const handleSetIsGameOn = (value: boolean) => {
     setIsGameOn(value);
     if (!value) {
-      setTheme(initialValues.generalTheme);
+      setWordList(initialValues.generalWordList);
       setSecretWord("");
-      setGuessedWord("");
+      setGameResult("none");
     }
   };
 
@@ -52,15 +57,18 @@ const GameContextProvider: React.FC<GameContextProviderProps> = ({
     setSecretWord,
     movesCount,
     setMovesCount,
-    theme,
-    setTheme,
+    wordList,
+    setWordList,
     currentScreen,
     setCurrentScreen,
-    changeScreen,
-    guessedWord,
-    setGuessedWord,
     isGameOn,
     setIsGameOn: handleSetIsGameOn,
+    selectedTheme,
+    setSelectedTheme,
+    currentHaiku,
+    setCurrentHaiku,
+    gameResult: gameResult as "win" | "lose" | "none" | "error",
+    setGameResult,
   };
 
   return (

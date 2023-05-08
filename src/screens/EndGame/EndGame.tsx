@@ -1,29 +1,30 @@
+import haikus from "../../data/haikus.json";
 import { useContext } from "react";
 import { GameContext } from "../../contexts/GameContext";
+import { extractRandomString } from "../../helpers";
+import { HaikuCard } from "../../components";
 
-type EndGameProps = {
-  win?: boolean;
-};
-
-function EndGame({ win = false }: EndGameProps) {
-  const { setCurrentScreen, secretWord, setIsGameOn } = useContext(GameContext);
+function EndGame() {
+  const {
+    setCurrentScreen,
+    setIsGameOn,
+    setCurrentHaiku,
+    gameResult,
+    setGameResult,
+  } = useContext(GameContext);
 
   const handleNewGame = () => {
+    setCurrentHaiku(extractRandomString(haikus.newGame));
+    setGameResult("none");
     setCurrentScreen("New Game");
     setIsGameOn(false);
   };
 
-  const renderedMsg = (
-    <h1>
-      {win
-        ? `You have won! The secret word was ${secretWord.toLocaleUpperCase()}`
-        : `You Have lost... The secret word was ${secretWord.toLocaleUpperCase()}`}
-    </h1>
-  );
-
   return (
     <div>
-      {renderedMsg}
+      <p>{gameResult}</p>
+
+      <HaikuCard />
 
       <button onClick={handleNewGame}>New Game</button>
     </div>

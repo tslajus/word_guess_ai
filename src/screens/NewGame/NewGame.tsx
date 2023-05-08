@@ -1,3 +1,4 @@
+import haikus from "../../data/haikus.json";
 import { useState, useContext } from "react";
 import { GameContext } from "../../contexts/GameContext";
 import { extractRandomString, handleInputChange } from "../../helpers";
@@ -6,22 +7,28 @@ function NewGame() {
   const {
     setCurrentScreen,
     setSecretWord,
-    setTheme,
-    allThemes,
-    generalTheme,
+    setWordList,
+    allWordLists,
+    generalWordList,
+    setCurrentHaiku,
     isGameOn,
     setIsGameOn,
     levels,
     setMovesCount,
+    selectedTheme,
+    setSelectedTheme,
+    gameResult,
   } = useContext(GameContext);
-  const [selectedTheme, setSelectedTheme] = useState("general");
   const [selectedLevel, setSelectedLevel] = useState("easy");
 
   const handleStart = () => {
     let selectedWordList =
-      selectedTheme === "general" ? generalTheme : allThemes[selectedTheme];
-    setTheme(selectedWordList);
+      selectedTheme === "general"
+        ? generalWordList
+        : allWordLists[selectedTheme];
+    setWordList(selectedWordList);
     setSecretWord(extractRandomString(selectedWordList));
+    setCurrentHaiku(extractRandomString(haikus.newGame));
     setMovesCount(levels[selectedLevel]);
     setIsGameOn(true);
     setCurrentScreen("Game");
@@ -33,6 +40,7 @@ function NewGame() {
 
   return (
     <div>
+      <p>{gameResult}</p>
       <h1>New Game</h1>
 
       <select
@@ -53,7 +61,7 @@ function NewGame() {
         onChange={(event) => handleInputChange(event, setSelectedTheme)}
       >
         <option value="general">general</option>
-        {Object.keys(allThemes).map((theme) => (
+        {Object.keys(allWordLists).map((theme) => (
           <option key={theme} value={theme}>
             {theme}
           </option>

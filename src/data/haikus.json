@@ -1,0 +1,12 @@
+{
+  "newGame": [
+    "Ask questions for clues || Mind the moves, count them with care || One try, win or lose",
+    "Seek hints, question well, || Treasure each move left to make, || One guess, time will tell."
+  ],
+  "noMoves": [
+    "Out of moves, you stand || Time for a guess, now arrives || Choose wisely, my friend"
+  ],
+  "error": [
+    "A glitch has occurred || Paths entwined, confusion reigns || Seek calm and restart"
+  ]
+}

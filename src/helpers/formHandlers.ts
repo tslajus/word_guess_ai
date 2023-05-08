@@ -1,6 +1,6 @@
 export const handleInputChange = (
   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  setInputValue: React.Dispatch<React.SetStateAction<string>>
+  setInputValue: (value: string) => void
 ) => {
   setInputValue(e.target.value);
 };

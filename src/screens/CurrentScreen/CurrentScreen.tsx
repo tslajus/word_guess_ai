@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GameContext } from "../../contexts/GameContext";
-import { NewGame, Game, EndGame, Error } from "../";
+import { NewGame, Game, EndGame } from "../";
 
 function CurrentScreen() {
   const { currentScreen } = useContext(GameContext);
@@ -11,14 +11,10 @@ function CurrentScreen() {
         return <NewGame />;
       case "Game":
         return <Game />;
-      case "Win Game":
-        return <EndGame win={true} />;
-      case "Lose Game":
+      case "End Game":
         return <EndGame />;
-      case "Error":
-        return <Error />;
       default:
-        return <Error />;
+        return <NewGame />;
     }
   };
 
