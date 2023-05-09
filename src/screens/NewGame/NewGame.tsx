@@ -9,7 +9,7 @@ function NewGame() {
     setSecretWord,
     setWordList,
     allWordLists,
-    generalWordList,
+    randomWordList,
     setCurrentHaiku,
     isGameOn,
     setIsGameOn,
@@ -23,9 +23,7 @@ function NewGame() {
 
   const handleStart = () => {
     let selectedWordList =
-      selectedTheme === "general"
-        ? generalWordList
-        : allWordLists[selectedTheme];
+      selectedTheme === "random" ? randomWordList : allWordLists[selectedTheme];
     setWordList(selectedWordList);
     setSecretWord(extractRandomString(selectedWordList));
     setCurrentHaiku(extractRandomString(haikus.newGame));
@@ -60,7 +58,7 @@ function NewGame() {
         value={selectedTheme}
         onChange={(event) => handleInputChange(event, setSelectedTheme)}
       >
-        <option value="general">general</option>
+        <option value="random">random</option>
         {Object.keys(allWordLists).map((theme) => (
           <option key={theme} value={theme}>
             {theme}

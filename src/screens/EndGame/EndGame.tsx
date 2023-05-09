@@ -1,5 +1,6 @@
 import haikus from "../../data/haikus.json";
 import { useContext } from "react";
+import { useGameStateSetter } from "../../hooks";
 import { GameContext } from "../../contexts/GameContext";
 import { extractRandomString } from "../../helpers";
 import { HaikuCard } from "../../components";
@@ -13,10 +14,14 @@ function EndGame() {
     setGameResult,
   } = useContext(GameContext);
 
+  const { gameStateSetter } = useGameStateSetter(
+    setCurrentHaiku,
+    setGameResult,
+    setCurrentScreen
+  );
+
   const handleNewGame = () => {
-    setCurrentHaiku(extractRandomString(haikus.newGame));
-    setGameResult("none");
-    setCurrentScreen("New Game");
+    gameStateSetter(extractRandomString(haikus.newGame), "none", "NewGame");
     setIsGameOn(false);
   };
 

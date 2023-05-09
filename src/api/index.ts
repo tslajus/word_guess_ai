@@ -1,1 +1,1 @@
-export { default as fetchHaiku } from "./fetchtHaiku";
+export { default as fetchHaiku } from "./fetchHaiku";

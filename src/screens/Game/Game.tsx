@@ -1,6 +1,7 @@
 import haikus from "../../data/haikus.json";
 import { fetchHaiku } from "../../api";
 import { useContext, useState } from "react";
+import { useGameStateSetter } from "../../hooks";
 import { GameContext } from "../../contexts/GameContext";
 import {
   handleInputChange,
@@ -20,28 +21,18 @@ function Game() {
     setCurrentHaiku,
     gameResult,
     setGameResult,
+    isLoading,
+    setIsLoading,
   } = useContext(GameContext);
+
+  const { gameStateSetter, errorStateSetter } = useGameStateSetter(
+    setCurrentHaiku,
+    setGameResult,
+    setCurrentScreen
+  );
 
   const [questionInputValue, setQuestionInputValue] = useState("");
   const [guessInputValue, setGuessInputValue] = useState("");
-
-  const handleNewGame = () => {
-    setCurrentScreen("New Game");
-  };
-
-  const handleSurrender = async () => {
-    const surrenderHaiku = await fetchHaiku("surrender", secretWord);
-
-    if (surrenderHaiku === "Error") {
-      setCurrentHaiku(extractRandomString(haikus.error));
-      setGameResult("error");
-      setCurrentScreen("End Game");
-    } else {
-      setCurrentHaiku(surrenderHaiku);
-      setGameResult("lose");
-      setCurrentScreen("End Game");
-    }
-  };
 
   const handleAsk = async () => {
     if (movesCount <= 0) {
@@ -52,14 +43,13 @@ function Game() {
       const answer = await fetchHaiku(
         "question",
         secretWord,
+        setIsLoading,
         undefined,
         questionInputValue
       );
 
       if (answer === "Error") {
-        setCurrentHaiku(extractRandomString(haikus.error));
-        setGameResult("error");
-        setCurrentScreen("End Game");
+        errorStateSetter();
       } else {
         setCurrentHaiku(answer);
       }
@@ -67,36 +57,56 @@ function Game() {
   };
 
   const handleGuess = async () => {
-    const result = await fetchHaiku("result", secretWord, guessInputValue);
+    const result = await fetchHaiku(
+      "result",
+      secretWord,
+      setIsLoading,
+      guessInputValue
+    );
 
-    if (stringCleaner(result) === "yes") {
-      const winHaiku = await fetchHaiku("win", secretWord);
-
-      if (winHaiku === "Error") {
-        setCurrentHaiku(extractRandomString(haikus.error));
-        setGameResult("error");
-        setCurrentScreen("End Game");
-      } else {
-        setCurrentHaiku(winHaiku);
-        setGameResult("win");
-        setCurrentScreen("End Game");
-      }
-    } else if (result === "Error") {
-      setCurrentHaiku(extractRandomString(haikus.error));
-      setGameResult("error");
-      setCurrentScreen("End Game");
+    if (result === "Error") {
+      errorStateSetter();
     } else {
-      const loseHaiku = await fetchHaiku("lose", secretWord, guessInputValue);
+      if (stringCleaner(result) === "yes") {
+        const winHaiku = await fetchHaiku("win", secretWord, setIsLoading);
 
-      if (loseHaiku === "Error") {
-        setCurrentHaiku(extractRandomString(haikus.error));
-        setGameResult("error");
-        setCurrentScreen("End Game");
+        if (winHaiku === "Error") {
+          errorStateSetter();
+        } else {
+          gameStateSetter(winHaiku, "win", "End Game");
+        }
       } else {
-        setCurrentHaiku(loseHaiku);
-        setGameResult("lose");
-        setCurrentScreen("End Game");
+        const loseHaiku = await fetchHaiku(
+          "lose",
+          secretWord,
+          setIsLoading,
+          guessInputValue
+        );
+
+        if (loseHaiku === "Error") {
+          errorStateSetter();
+        } else {
+          gameStateSetter(loseHaiku, "lose", "End Game");
+        }
       }
+    }
+  };
+
+  const handleNewGame = () => {
+    setCurrentScreen("New Game");
+  };
+
+  const handleSurrender = async () => {
+    const surrenderHaiku = await fetchHaiku(
+      "surrender",
+      secretWord,
+      setIsLoading
+    );
+
+    if (surrenderHaiku === "Error") {
+      errorStateSetter();
+    } else {
+      gameStateSetter(surrenderHaiku, "lose", "End Game");
     }
   };
 
@@ -106,6 +116,7 @@ function Game() {
       <p>Theme: {selectedTheme.toLocaleUpperCase()}</p>
       <p>Moves left: {movesCount}</p>
       <HaikuCard />
+      {isLoading && <p>Writing</p>}
 
       <form onSubmit={(e) => handleSubmit(e, handleAsk)}>
         <input

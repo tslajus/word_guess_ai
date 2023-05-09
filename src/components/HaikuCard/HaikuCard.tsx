@@ -7,8 +7,8 @@ function HaikuCard() {
 
   return (
     <div>
-      {renderHaiku(currentHaiku).map((line) => (
-        <h5 key={line}>{line}</h5>
+      {renderHaiku(currentHaiku).map((line, index) => (
+        <h5 key={index}>{line}</h5>
       ))}
     </div>
   );

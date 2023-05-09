@@ -12,6 +12,8 @@ type Levels = {
   expert: number;
 };
 
+type GameResult = "win" | "lose" | "none" | "error";
+
 type GameContextType = {
   currentScreen: string;
   setCurrentScreen: (screen: string) => void;
@@ -20,18 +22,20 @@ type GameContextType = {
   wordList: string[];
   setWordList: (theme: string[]) => void;
   allWordLists: Themes;
-  generalWordList: string[];
+  randomWordList: string[];
   movesCount: number;
   setMovesCount: (count: number) => void;
   levels: Levels;
   isGameOn: boolean;
   setIsGameOn: Dispatch<SetStateAction<boolean>>;
+  isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
   selectedTheme: string;
   setSelectedTheme: (theme: string) => void;
   currentHaiku: string;
   setCurrentHaiku: (haiku: string) => void;
-  gameResult: "win" | "lose" | "none" | "error";
-  setGameResult: (result: "win" | "lose" | "none" | "error") => void;
+  gameResult: GameResult;
+  setGameResult: (result: GameResult) => void;
 };
 
 type GameContextProviderProps = {

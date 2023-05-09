@@ -9,9 +9,11 @@ const openai = new OpenAIApi(configuration);
 const fetchHaiku = async (
   messageType: "result" | "question" | "win" | "lose" | "surrender",
   secretWord: string,
+  setIsLoading: (loading: boolean) => void,
   guessedWord?: string,
   question?: string
 ): Promise<string> => {
+  setIsLoading(true);
   let systemContent = "";
   let userContent = "";
 
@@ -60,9 +62,11 @@ const fetchHaiku = async (
       ],
     });
 
+    setIsLoading(false);
     return completion.data.choices[0]?.message?.content || "Error";
   } catch (error) {
     console.error("Error:", error);
+    setIsLoading(false);
     return "Error";
   }
 };
