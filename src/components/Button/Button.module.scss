@@ -1,0 +1,30 @@
+@use "@/sass/index.scss" as g;
+
+.btn {
+  @include g.flex;
+  @include g.font-properties(g.$font-primary, g.$font-size-md, g.$color-light);
+  @include g.size(100%, 100%);
+  background-color: g.$color-black;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    background-color: g.$color-brown;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &Light {
+    background-color: g.$color-gray;
+    transition: background-color 0.2s;
+  }
+}
+
+@include g.respond("horizontal-screen") {
+  .btn {
+    background-color: g.$color-gray;
+  }
+}

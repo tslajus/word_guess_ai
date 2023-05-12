@@ -1,0 +1,32 @@
+@use "@/sass/index.scss" as g;
+
+.header {
+  @include g.flex(center, space-between);
+  @include g.size(100%);
+  @include g.grid-position(1, 2, 1, -1);
+  @include g.font-properties(
+    g.$font-secondary,
+    g.$font-size-md,
+    g.$color-light
+  );
+  padding: g.$horizontal-padding;
+}
+
+.win {
+  background-color: g.$color-blue-shade;
+}
+
+.lose,
+.error {
+  background-color: g.$color-red-shade;
+}
+
+.none {
+  background-color: g.$color-gray;
+}
+
+@include g.respond("horizontal-screen") {
+  .header {
+    padding: g.$horizontal-padding-xl;
+  }
+}

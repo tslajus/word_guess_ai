@@ -1,0 +1,55 @@
+@use "@/sass/index.scss" as g;
+
+.form {
+  @include g.flex(stretch, space-between);
+  @include g.size(auto, g.$grid-row-height);
+  gap: calc(100% / g.$grid-columns);
+
+  input {
+    @include g.size(100%);
+    @include g.font-properties(
+      g.$font-secondary,
+      g.$font-size-md,
+      g.$color-black
+    );
+    background-color: g.$color-light;
+    border: none;
+    padding: g.$horizontal-padding;
+    flex: 7;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: g.$color-gray;
+    }
+  }
+
+  button {
+    flex: 3;
+  }
+}
+
+@include g.respond("horizontal-screen") {
+  .form {
+    @include g.flex(center, center, column);
+    @include g.size(100%, calc(g.$grid-row-height-horizontal * 3));
+
+    gap: 0;
+
+    input,
+    button {
+      width: calc(100% - 100vw / g.$grid-columns-horizontal * 2);
+    }
+
+    button {
+      flex: 1;
+    }
+
+    input {
+      padding: g.$horizontal-padding-lg;
+      flex: 2;
+    }
+  }
+}

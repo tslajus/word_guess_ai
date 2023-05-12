@@ -1,0 +1,37 @@
+@use "@/sass/index.scss" as g;
+
+.loader {
+  @include g.flex;
+  @include g.font-properties(g.$font-primary, g.$font-size-lg, g.$color-light);
+  @include g.grid-position(1, -1, 1, -1);
+  background-color: g.$color-gray;
+}
+
+.text {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    animation: dots 2s infinite;
+  }
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: "";
+  }
+  40% {
+    content: ".";
+  }
+  60% {
+    content: "..";
+  }
+  80%,
+  100% {
+    content: "...";
+  }
+}

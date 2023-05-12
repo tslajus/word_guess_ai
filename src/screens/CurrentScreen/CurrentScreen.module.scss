@@ -1,0 +1,47 @@
+@use "@/sass/index.scss" as g;
+
+.container {
+  @include g.size(g.$container-width, g.$container-height);
+  display: grid;
+  grid-template-columns: repeat(g.$grid-columns, 1fr);
+  grid-template-rows: repeat(g.$grid-rows, 1fr);
+}
+
+.win {
+  background-color: g.$color-blue;
+}
+
+.lose,
+.error {
+  background-color: g.$color-red;
+}
+
+.none {
+  background-color: g.$color-light;
+}
+
+@include g.respond("big-desktop") {
+  .container {
+    @include g.size(g.$container-width-big, g.$container-height);
+  }
+}
+
+@include g.respond("vertical-screen") {
+  .container {
+    @include g.size(80%, 85%);
+  }
+}
+
+@include g.respond("vertical-small-screen") {
+  .container {
+    @include g.size(100%, 100vh);
+  }
+}
+
+@include g.respond("horizontal-screen") {
+  .container {
+    @include g.size(100%, 100vh);
+    grid-template-columns: repeat(g.$grid-columns-horizontal, 1fr);
+    grid-template-rows: repeat(g.$grid-rows-horizontal, 1fr);
+  }
+}

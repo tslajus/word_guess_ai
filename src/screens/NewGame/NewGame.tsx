@@ -1,7 +1,10 @@
 import haikus from "../../data/haikus.json";
 import { useState, useContext } from "react";
 import { GameContext } from "../../contexts/GameContext";
-import { extractRandomString, handleInputChange } from "../../helpers";
+import { extractRandomString } from "../../helpers";
+import { Button, Selection } from "../../components";
+
+import styles from "./NewGame.module.scss";
 
 function NewGame() {
   const {
@@ -17,7 +20,6 @@ function NewGame() {
     setMovesCount,
     selectedTheme,
     setSelectedTheme,
-    gameResult,
   } = useContext(GameContext);
   const [selectedLevel, setSelectedLevel] = useState("easy");
 
@@ -36,39 +38,53 @@ function NewGame() {
     setCurrentScreen("Game");
   };
 
+  const themeOptions = [
+    { value: "random", label: "random" },
+    ...Object.keys(allWordLists).map((theme) => ({
+      value: theme,
+      label: theme,
+    })),
+  ];
+
+  const handleThemeChange = (value: string) => {
+    setSelectedTheme(value);
+  };
+
   return (
-    <div>
-      <p>{gameResult}</p>
-      <h1>New Game</h1>
+    <>
+      <div className={styles.backdrop} />
+      <header className={styles.header}>New Game</header>
 
-      <select
-        id="level-select"
-        value={selectedLevel}
-        onChange={(e) => handleInputChange(e, setSelectedLevel)}
-      >
+      <div className={styles.levels}>
         {Object.keys(levels).map((level) => (
-          <option key={level} value={level}>
-            {level}
-          </option>
+          <Button
+            key={level}
+            className={level === selectedLevel ? styles.active : ""}
+            text={level}
+            onClick={() => setSelectedLevel(level)}
+          />
         ))}
-      </select>
+      </div>
 
-      <select
-        id="theme-select"
+      <div className={styles.themeLabel}>Theme:</div>
+
+      <Selection
+        className={styles.themes}
+        options={themeOptions}
         value={selectedTheme}
-        onChange={(event) => handleInputChange(event, setSelectedTheme)}
-      >
-        <option value="random">random</option>
-        {Object.keys(allWordLists).map((theme) => (
-          <option key={theme} value={theme}>
-            {theme}
-          </option>
-        ))}
-      </select>
+        onChange={handleThemeChange}
+      />
 
-      <button onClick={handleStart}>Start</button>
-      {isGameOn && <button onClick={handleCancel}>Cancel</button>}
-    </div>
+      <Button className={styles.startBtn} text="start" onClick={handleStart} />
+      {isGameOn && (
+        <Button
+          className={styles.cancelBtn}
+          text="cancel"
+          isLight
+          onClick={handleCancel}
+        />
+      )}
+    </>
   );
 }
 

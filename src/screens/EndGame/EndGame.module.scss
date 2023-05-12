@@ -1,0 +1,13 @@
+@use "@/sass/index.scss" as g;
+
+.button {
+  @include g.grid-position(19, 20, 1, 6);
+  @include g.size(100%);
+}
+
+@include g.respond("horizontal-screen") {
+  .button {
+    @include g.grid-position(11, 12, 1, 6);
+    background-color: g.$color-black;
+  }
+}

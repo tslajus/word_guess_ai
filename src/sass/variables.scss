@@ -1,0 +1,35 @@
+$color-black: #222222;
+$color-gray: #7e745e;
+$color-light: #f0ebdf;
+$color-light-shade: #f2dbd3;
+$color-gray-light: #f0ebdf;
+$color-blue: #7c7eb6;
+$color-blue-shade: #54557e;
+$color-red: #eb4544;
+$color-red-shade: #a62e2d;
+$color-yellow: #f6b429;
+$color-brown: #5b312a;
+
+$font-primary: "Cinzel", serif;
+$font-secondary: "Fauna One", serif;
+
+$font-size-md: 1.3rem;
+$font-size-lg: 2.4rem;
+$font-size-xl: 4.8rem;
+
+$gap: 1rem;
+$gap-lg: 2rem;
+
+$container-height: 70vh;
+$container-width: 35rem;
+$container-width-big: 60rem;
+$grid-rows: 20;
+$grid-columns: 11;
+$grid-row-height: calc($container-height / $grid-rows);
+$horizontal-padding: 0 $gap;
+$horizontal-padding-lg: 0 $gap-lg;
+$horizontal-padding-xl: 0 calc($gap-lg * 2);
+
+$grid-rows-horizontal: 12;
+$grid-columns-horizontal: 20;
+$grid-row-height-horizontal: calc(100vh / $grid-rows-horizontal);

@@ -1,0 +1,67 @@
+@use "@/sass/index.scss" as g;
+
+.selector {
+  @include g.flex(center, space-between);
+  cursor: pointer;
+  background-color: g.$color-black;
+  height: g.$grid-row-height;
+  width: 100%;
+  padding: g.$horizontal-padding;
+}
+
+.selectedValue,
+.option {
+  @include g.flex(center, start);
+  @include g.font-properties(
+    g.$font-secondary,
+    g.$font-size-md,
+    g.$color-light
+  );
+
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.selectedValue {
+  @include g.font-properties(g.$font-primary, g.$font-size-md, g.$color-light);
+  max-width: calc(100% - g.$gap-lg);
+  height: 100%;
+  background-color: g.$color-black;
+  flex: 1;
+}
+
+.option {
+  max-width: 100%;
+  height: g.$grid-row-height;
+  background-color: g.$color-gray;
+  padding: g.$horizontal-padding;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: g.$color-brown;
+  }
+}
+
+.arrow {
+  @include g.size(0, 0);
+  border-top: 0.6rem solid transparent;
+  border-bottom: 0.6rem solid transparent;
+
+  border-right: 0.8rem solid g.$color-light;
+  transition: all 0.2s;
+
+  &Down {
+    transform: rotate(-90deg);
+  }
+}
+
+@include g.respond("horizontal-screen") {
+  .selector,
+  .option {
+    height: g.$grid-row-height-horizontal;
+    padding: g.$horizontal-padding-lg;
+  }
+}

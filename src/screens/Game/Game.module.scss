@@ -1,0 +1,42 @@
+@use "@/sass/index.scss" as g;
+
+.form {
+  @include g.flex(stretch, space-between, column);
+  @include g.grid-position(16, 20, 1, -1);
+  height: 100%;
+}
+
+.buttons {
+  @include g.flex(stretch, space-between);
+  height: g.$grid-row-height;
+  gap: calc(100% / g.$grid-columns);
+}
+
+.backdrop {
+  @include g.grid-position(15, -1, 1, -1);
+  background-color: g.$color-gray;
+}
+
+@include g.respond("horizontal-screen") {
+  .backdrop {
+    @include g.grid-position(2, -1, 1, 10);
+    background-color: g.$color-black;
+  }
+
+  .form {
+    @include g.flex(stretch, space-between, column);
+    @include g.grid-position(3, 12, 1, 10);
+    height: 100%;
+  }
+
+  .buttons {
+    @include g.flex(stretch, space-between);
+    height: g.$grid-row-height-horizontal;
+    gap: 0;
+
+    button:first-child {
+      background-color: g.$color-light;
+      color: g.$color-black;
+    }
+  }
+}

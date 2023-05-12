@@ -1,0 +1,61 @@
+@mixin flex(
+  $align-items: center,
+  $justify-content: center,
+  $flex-direction: row
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+@mixin font-properties(
+  $font-family: g.$font-secondary,
+  $font-size: g.$font-size-md,
+  $color: g.$color-light
+) {
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $color;
+}
+
+@mixin size($width: auto, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin grid-position(
+  $grid-row-start,
+  $grid-row-end,
+  $grid-column-start,
+  $grid-column-end
+) {
+  grid-row-start: $grid-row-start;
+  grid-row-end: $grid-row-end;
+  grid-column-start: $grid-column-start;
+  grid-column-end: $grid-column-end;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == "desktop" {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == "big-desktop" {
+    @media (min-width: 1921px) {
+      @content;
+    }
+  } @else if $breakpoint == "vertical-screen" {
+    @media (max-width: 760px) and (orientation: portrait) {
+      @content;
+    }
+  } @else if $breakpoint == "vertical-small-screen" {
+    @media (max-width: 500px) and (orientation: portrait) {
+      @content;
+    }
+  } @else if $breakpoint == "horizontal-screen" {
+    @media (max-width: 1023px) and (orientation: landscape) {
+      @content;
+    }
+  }
+}

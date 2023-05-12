@@ -3,13 +3,10 @@ import { fetchHaiku } from "../../api";
 import { useContext, useState } from "react";
 import { useGameStateSetter } from "../../hooks";
 import { GameContext } from "../../contexts/GameContext";
-import {
-  handleInputChange,
-  handleSubmit,
-  stringCleaner,
-  extractRandomString,
-} from "../../helpers";
-import { HaikuCard } from "../../components";
+import { stringCleaner, extractRandomString } from "../../helpers";
+import { Header, HaikuCard, Form, Button, Loader } from "../../components";
+
+import styles from "./Game.module.scss";
 
 function Game() {
   const {
@@ -19,7 +16,6 @@ function Game() {
     setMovesCount,
     selectedTheme,
     setCurrentHaiku,
-    gameResult,
     setGameResult,
     isLoading,
     setIsLoading,
@@ -51,6 +47,9 @@ function Game() {
       if (answer === "Error") {
         errorStateSetter();
       } else {
+        console.log(answer);
+        console.log(secretWord);
+
         setCurrentHaiku(answer);
       }
     }
@@ -110,37 +109,43 @@ function Game() {
     }
   };
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <div>
-      <p>{gameResult}</p>
-      <p>Theme: {selectedTheme.toLocaleUpperCase()}</p>
-      <p>Moves left: {movesCount}</p>
+    <>
+      <Header>
+        <p>Theme: {selectedTheme.toUpperCase()}</p>
+        <p>Moves left: {movesCount}</p>
+      </Header>
+
       <HaikuCard />
-      {isLoading && <p>Writing</p>}
 
-      <form onSubmit={(e) => handleSubmit(e, handleAsk)}>
-        <input
-          type="text"
-          value={questionInputValue}
-          onChange={(e) => handleInputChange(e, setQuestionInputValue)}
+      <div className={styles.backdrop} />
+      <div className={styles.form}>
+        <Form
+          onSubmit={handleAsk}
+          inputValue={questionInputValue}
+          onInputChange={setQuestionInputValue}
+          submitText="ask"
+          placeholder="Ask for a revealing clue"
         />
-        <button type="submit">Ask</button>
-      </form>
-      <br />
 
-      <form onSubmit={(e) => handleSubmit(e, handleGuess)}>
-        <input
-          type="text"
-          value={guessInputValue}
-          onChange={(e) => handleInputChange(e, setGuessInputValue)}
+        <Form
+          onSubmit={handleGuess}
+          inputValue={guessInputValue}
+          onInputChange={setGuessInputValue}
+          submitText="guess"
+          placeholder="Guess the secret word"
         />
-        <button type="submit">Guess</button>
-      </form>
-      <br />
 
-      <button onClick={handleNewGame}>New Game</button>
-      <button onClick={handleSurrender}>Surrender</button>
-    </div>
+        <div className={styles.buttons}>
+          <Button text="new game" onClick={handleNewGame} />
+          <Button text="surrender" onClick={handleSurrender} />
+        </div>
+      </div>
+    </>
   );
 }
 

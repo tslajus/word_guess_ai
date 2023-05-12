@@ -1,0 +1,86 @@
+@use "@/sass/index.scss" as g;
+
+.header {
+  @include g.flex;
+  @include g.font-properties(g.$font-primary, g.$font-size-xl, g.$color-black);
+  @include g.grid-position(1, 7, 1, -1);
+}
+
+.levels {
+  @include g.flex;
+  @include g.grid-position(7, 8, 1, -1);
+}
+
+.themes {
+  @include g.grid-position(10, 17, 7, -1);
+}
+
+.themeLabel {
+  @include g.flex(center, end);
+  @include g.grid-position(10, 11, 2, 6);
+  color: g.$color-black;
+}
+
+.startBtn {
+  @include g.size(100%);
+  @include g.grid-position(19, 20, 1, 6);
+}
+
+.cancelBtn {
+  @include g.size(100%);
+  @include g.grid-position(19, 20, 7, -1);
+}
+
+.active {
+  background-color: g.$color-brown;
+}
+
+.backdrop {
+  display: none;
+}
+
+@include g.respond("horizontal-screen") {
+  .header {
+    @include g.flex;
+    @include g.font-properties(
+      g.$font-primary,
+      g.$font-size-xl,
+      g.$color-light
+    );
+    @include g.grid-position(3, 11, 1, 11);
+  }
+
+  .levels {
+    @include g.flex;
+    @include g.grid-position(2, 3, 1, 11);
+  }
+
+  .startBtn {
+    @include g.size(100%, 100%);
+    @include g.grid-position(11, 12, 1, 6);
+    background-color: g.$color-light;
+    color: g.$color-black;
+  }
+
+  .cancelBtn {
+    @include g.size(100%);
+    @include g.grid-position(11, 12, 6, 11);
+  }
+
+  .themes {
+    @include g.grid-position(2, 3, 15, 20);
+    height: g.$grid-row-height-horizontal;
+  }
+
+  .themeLabel {
+    @include g.flex(center, end);
+    @include g.grid-position(2, 3, 12, 14);
+    color: g.$color-black;
+  }
+
+  .backdrop {
+    @include g.grid-position(1, -1, 1, 11);
+    display: flex;
+    background-color: g.$color-black;
+  }
+}

@@ -1,0 +1,13 @@
+@use "./sass/index.scss" as g;
+
+.background {
+  @include g.flex;
+  @include g.size(100%, 100vh);
+
+  background-color: g.$color-black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

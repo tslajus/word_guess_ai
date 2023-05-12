@@ -1,0 +1,32 @@
+@use "@/sass/index.scss" as g;
+
+.container {
+  @include g.flex(stretch, space-between, column);
+  @include g.grid-position(6, 10, 2, 11);
+  @include g.size(auto, 100%);
+}
+
+.row {
+  @include g.flex;
+  @include g.size(fit-content, g.$grid-row-height);
+  @include g.font-properties(
+    g.$font-secondary,
+    g.$font-size-md,
+    g.$color-light
+  );
+  padding: g.$horizontal-padding;
+  background-color: g.$color-black;
+}
+
+@include g.respond("horizontal-screen") {
+  .container {
+    @include g.flex(ends, space-between, column);
+    @include g.grid-position(5, 9, 11, -1);
+    margin: 0 auto;
+  }
+
+  .row {
+    @include g.size(fit-content, g.$grid-row-height-horizontal);
+    padding: g.$horizontal-padding-lg;
+  }
+}

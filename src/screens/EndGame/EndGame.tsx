@@ -3,7 +3,9 @@ import { useContext } from "react";
 import { useGameStateSetter } from "../../hooks";
 import { GameContext } from "../../contexts/GameContext";
 import { extractRandomString } from "../../helpers";
-import { HaikuCard } from "../../components";
+import { Header, HaikuCard, Button } from "../../components";
+
+import styles from "./EndGame.module.scss";
 
 function EndGame() {
   const {
@@ -12,6 +14,7 @@ function EndGame() {
     setCurrentHaiku,
     gameResult,
     setGameResult,
+    secretWord,
   } = useContext(GameContext);
 
   const { gameStateSetter } = useGameStateSetter(
@@ -26,13 +29,24 @@ function EndGame() {
   };
 
   return (
-    <div>
-      <p>{gameResult}</p>
+    <>
+      <Header>
+        <p>
+          {gameResult === "win"
+            ? "Congratulations!"
+            : gameResult === "lose"
+            ? `The secret word was ${secretWord.toLocaleUpperCase()}`
+            : "An error occured, try again"}
+        </p>
+      </Header>
 
       <HaikuCard />
-
-      <button onClick={handleNewGame}>New Game</button>
-    </div>
+      <Button
+        className={styles.button}
+        text="new game"
+        onClick={handleNewGame}
+      />
+    </>
   );
 }
 

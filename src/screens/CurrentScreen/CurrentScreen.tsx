@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { GameContext } from "../../contexts/GameContext";
 import { NewGame, Game, EndGame } from "../";
 
+import styles from "./CurrentScreen.module.scss";
+
 function CurrentScreen() {
-  const { currentScreen } = useContext(GameContext);
+  const { currentScreen, gameResult } = useContext(GameContext);
 
   const renderCurrentScreen = () => {
     switch (currentScreen) {
@@ -18,7 +20,11 @@ function CurrentScreen() {
     }
   };
 
-  return <>{renderCurrentScreen()}</>;
+  return (
+    <div className={`${styles.container} ${styles[gameResult]}`}>
+      {renderCurrentScreen()}
+    </div>
+  );
 }
 
 export default CurrentScreen;
