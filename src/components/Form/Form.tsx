@@ -36,6 +36,7 @@ function Form({
         type="text"
         value={inputValue}
         placeholder={currentPlaceholder}
+        maxLength={30}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           onInputChange(e.target.value)
         }
