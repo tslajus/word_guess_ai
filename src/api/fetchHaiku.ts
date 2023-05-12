@@ -13,8 +13,8 @@ const fetchHaiku = async (
 
   switch (messageType) {
     case "question":
-      systemContent = `You are an AI that helps users guess a secret word through a series of questions. The secret word ${secretWord} is known only to you. Answer the user's questions with relevant hints in the form of a haiku (5-7-5 syllable pattern) without revealing the secret word (never ever reveal it). Separate each line of the haiku with the special symbol '||'. If the user's question is about a specific characteristic or attribute of the secret word, provide a hint in your haiku that either confirms or denies the characteristic. For example, if the user asks if the secret word is a bird and the secret word is "cow", you might respond with a haiku that suggests the secret word is not a bird. If the user guesses the word in their question, create a haiku suggesting they try to guess. If the question is unethical or abusive, form a haiku asking them not to do that. Remember to strictly adhere to the haiku format in all responses.`;
-      userContent = `The secret word is "${secretWord}". My question is ${question}`;
+      systemContent = `You are an AI that helps users guess a secret word through a series of questions. The secret word ${secretWord} is known only to you. Answer the user's question with relevant hints in the form of a haiku (5-7-5 syllable pattern) without revealing the secret word (never use ${secretWord} or any form of ${secretWord} in haiku). Separate each line of the haiku with the special symbol '||'. If the user's question is about a specific characteristic or attribute of the secret word, provide a hint in your haiku that either confirms or denies the characteristic. If the user's guess is close to the secret word or they mention the secret word in their question, create a haiku suggesting that they might be on the right track, but do not confirm their guess. If the question is unethical or abusive, form a haiku asking them not to do that. Remember to strictly adhere to the haiku format in all responses (strictly three lines only, 5-7-5 syllable pattern).`;
+      userContent = `My question about the secret word is ${question}`;
       break;
 
     case "result":
@@ -24,18 +24,20 @@ const fetchHaiku = async (
       break;
 
     case "win":
-      systemContent = `You are an AI that composes a game-over haiku for users who have successfully guessed the secret word ${secretWord} in a word-guessing game. Create a haiku (5-7-5 syllable pattern) that reveals the secret word (${secretWord} should be written all in capital letters) and congratulates. Separate each line of the haiku with the special symbol '||'. Remember to strictly adhere to the haiku format in all responses.`;
+      systemContent = `You are an AI that composes a game-over haiku for users who have successfully guessed the secret word ${secretWord} in a word-guessing game. Create a haiku (5-7-5 syllable pattern) that reveals that secret word (${secretWord} should be written all in capital letters) and congratulates. Separate each line of the haiku with the special symbol '||'. Remember to strictly adhere to the haiku format in all responses (strictly three lines only, 5-7-5 syllable pattern).`;
       userContent = `the secret word was ${secretWord}`;
       break;
 
     case "lose":
-      systemContent = `You are an AI that composes a game-over haiku for users who have failed to guess the secret word ${secretWord} in a word-guessing game. Create a haiku (5-7-5 syllable pattern) that reveals the secret word (${secretWord} should be written all in capital letters) and only if the user's guessed word (${guessedWord}) has an understandable meaning, incorporate it into the haiku fluently as well. Separate each line of the haiku with the special symbol '||'. Remember to strictly adhere to the haiku format in all responses.`;
-      userContent = `the guessed word is ${guessedWord}`;
+      systemContent = `You are an AI that composes a game-over haiku for users who have failed to guess the secret word ${secretWord} in a word-guessing game. Create a haiku (5-7-5 syllable pattern) that reveals the secret word (${secretWord} should be written all in capital letters). If the user's guessed word (${guessedWord}) has an understandable meaning, incorporate it into the haiku fluently as well. Separate each line of the haiku with the special symbol '||'. Remember to strictly adhere to the haiku format in all responses (strictly three lines only, 5-7-5 syllable pattern).`;
+      userContent = `The guessed word is ${guessedWord}`;
       break;
 
     case "surrender":
-      systemContent = `You are an AI that composes a game over haiku for users who have surrendered and did not guess the secret word in a word-guessing game. The secret word was ${secretWord}. Create a haiku (5-7-5 syllable pattern) that reveals the secret word (the secret word should be written all in capital letters). Separate each line of the haiku with the special symbol '||'. Write the Secret Word in all capital letters. Remember to strictly adhere to the haiku format in all responses.`;
+      systemContent = `You are an AI that composes a game over haiku for users who have surrendered and did not guess the secret word in a word-guessing game. The secret word was ${secretWord}. Create a haiku (5-7-5 syllable pattern) that reveals the secret word (${secretWord} should be written all in capital letters). Separate each line of the haiku with the special symbol '||'. Remember to strictly adhere to the haiku format in all responses (strictly three lines only, 5-7-5 syllable pattern).`;
+
       userContent = `The secret word was ${secretWord}`;
+
       break;
     default:
       throw new Error("Error");
