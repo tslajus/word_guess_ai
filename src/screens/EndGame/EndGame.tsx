@@ -1,9 +1,9 @@
-import haikus from "../../data/haikus.json";
+import haikus from "@/data/haikus.json";
 import { useContext } from "react";
-import { useGameStateSetter } from "../../hooks";
-import { GameContext } from "../../contexts/GameContext";
-import { extractRandomString } from "../../helpers";
-import { Header, HaikuCard, Button } from "../../components";
+import { useGameStateSetter } from "@/hooks";
+import { GameContext } from "@/contexts/GameContext";
+import { extractRandomString } from "@/helpers";
+import { Header, HaikuCard, Button } from "@/components";
 
 import styles from "./EndGame.module.scss";
 

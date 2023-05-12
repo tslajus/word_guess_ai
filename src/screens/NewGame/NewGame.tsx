@@ -1,8 +1,8 @@
-import haikus from "../../data/haikus.json";
+import haikus from "@/data/haikus.json";
 import { useState, useContext } from "react";
-import { GameContext } from "../../contexts/GameContext";
-import { extractRandomString } from "../../helpers";
-import { Button, Selection } from "../../components";
+import { GameContext } from "@/contexts/GameContext";
+import { extractRandomString } from "@/helpers";
+import { Button, Selection } from "@/components";
 
 import styles from "./NewGame.module.scss";
 

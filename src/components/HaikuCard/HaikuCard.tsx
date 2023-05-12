@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { GameContext } from "../../contexts/GameContext";
-import { renderHaiku } from "../../helpers";
+import { GameContext } from "@/contexts/GameContext";
+import { renderHaiku } from "@/helpers";
 
 import styles from "./HaikuCard.module.scss";
 

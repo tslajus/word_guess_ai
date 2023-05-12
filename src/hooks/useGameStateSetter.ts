@@ -1,5 +1,5 @@
-import { extractRandomString } from "../helpers";
-import haikus from "../data/haikus.json";
+import haikus from "@/data/haikus.json";
+import { extractRandomString } from "@/helpers";
 
 const useGameStateSetter = (
   haikuHandler: (haiku: string) => void,

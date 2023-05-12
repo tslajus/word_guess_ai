@@ -1,10 +1,10 @@
-import haikus from "../../data/haikus.json";
-import { fetchHaiku } from "../../api";
+import haikus from "@/data/haikus.json";
+import { fetchHaiku } from "@/api";
 import { useContext, useState } from "react";
-import { useGameStateSetter } from "../../hooks";
-import { GameContext } from "../../contexts/GameContext";
-import { stringCleaner, extractRandomString } from "../../helpers";
-import { Header, HaikuCard, Form, Button, Loader } from "../../components";
+import { useGameStateSetter } from "@/hooks";
+import { GameContext } from "@/contexts/GameContext";
+import { stringCleaner, extractRandomString } from "@/helpers";
+import { Header, HaikuCard, Form, Button, Loader } from "@/components";
 
 import styles from "./Game.module.scss";
 

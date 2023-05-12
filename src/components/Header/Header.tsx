@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useContext } from "react";
-import { GameContext } from "../../contexts/GameContext";
+import { GameContext } from "@/contexts/GameContext";
 
 import styles from "./Header.module.scss";
 

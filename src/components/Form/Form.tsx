@@ -1,5 +1,5 @@
 import { FormEvent, ChangeEvent, useState, useEffect } from "react";
-import { Button } from "../";
+import { Button } from "@/components";
 
 import styles from "./Form.module.scss";
 

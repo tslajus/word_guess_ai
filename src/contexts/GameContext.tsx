@@ -1,8 +1,8 @@
-import listOfWords from "../data/secretWords.json";
-import difficulties from "../data/difficulties.json";
-import haikus from "../data/haikus.json";
+import difficulties from "@/data/difficulties.json";
+import haikus from "@/data/haikus.json";
+import listOfWords from "@/data/secretWords.json";
 import { useState, createContext } from "react";
-import { extractRandomString } from "../helpers";
+import { extractRandomString } from "@/helpers";
 
 const initialValues: GameContextType = {
   currentScreen: "Error",

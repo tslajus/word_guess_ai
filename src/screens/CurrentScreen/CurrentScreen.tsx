@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { GameContext } from "../../contexts/GameContext";
-import { NewGame, Game, EndGame } from "../";
+import { GameContext } from "@/contexts/GameContext";
+import { NewGame, Game, EndGame } from "@/screens";
 
 import styles from "./CurrentScreen.module.scss";
 
