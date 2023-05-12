@@ -6,3 +6,15 @@
   top: 2rem;
   left: 2rem;
 }
+
+@include g.respond("vertical-screen") {
+  .logo {
+    display: none;
+  }
+}
+
+@include g.respond("horizontal-screen") {
+  .logo {
+    display: none;
+  }
+}

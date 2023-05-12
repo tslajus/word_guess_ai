@@ -3,11 +3,13 @@
 .button {
   @include g.grid-position(19, 20, 1, 6);
   @include g.size(100%);
+  @include g.border-radius(0, g.$border-radius, g.$border-radius);
 }
 
 @include g.respond("horizontal-screen") {
   .button {
     @include g.grid-position(11, 12, 1, 6);
+    @include g.border-radius();
     background-color: g.$color-black;
   }
 }

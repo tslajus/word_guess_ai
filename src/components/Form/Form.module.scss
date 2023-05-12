@@ -7,6 +7,7 @@
 
   input {
     @include g.size(100%);
+    @include g.border-radius(0, g.$border-radius, g.$border-radius);
     @include g.font-properties(
       g.$font-secondary,
       g.$font-size-md,
@@ -14,6 +15,7 @@
     );
     background-color: g.$color-light;
     border: none;
+
     padding: g.$horizontal-padding;
     flex: 7;
 
@@ -27,6 +29,7 @@
   }
 
   button {
+    @include g.border-radius(g.$border-radius, 0, 0);
     flex: 3;
   }
 }
@@ -40,6 +43,7 @@
 
     input,
     button {
+      @include g.border-radius();
       width: calc(100% - 100vw / g.$grid-columns-horizontal * 2);
     }
 

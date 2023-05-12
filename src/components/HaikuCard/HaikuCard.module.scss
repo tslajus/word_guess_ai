@@ -9,6 +9,7 @@
 .row {
   @include g.flex;
   @include g.size(fit-content, g.$grid-row-height);
+  @include g.border-radius(g.$border-radius);
   @include g.font-properties(
     g.$font-secondary,
     g.$font-size-md,
@@ -27,6 +28,7 @@
 
   .row {
     @include g.size(fit-content, g.$grid-row-height-horizontal);
+    @include g.border-radius();
     padding: g.$horizontal-padding-lg;
   }
 }

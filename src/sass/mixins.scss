@@ -59,3 +59,16 @@
     }
   }
 }
+
+@mixin border-radius(
+  $top-left: 0,
+  $top-right: null,
+  $bottom-right: null,
+  $bottom-left: null
+) {
+  $top-right: if($top-right == null, $top-left, $top-right);
+  $bottom-right: if($bottom-right == null, $top-left, $bottom-right);
+  $bottom-left: if($bottom-left == null, $top-left, $bottom-left);
+
+  border-radius: $top-left $top-right $bottom-right $bottom-left;
+}

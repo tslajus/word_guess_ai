@@ -2,9 +2,11 @@
 
 .container {
   @include g.size(g.$container-width, g.$container-height);
+  @include g.border-radius(g.$border-radius-lg);
   display: grid;
   grid-template-columns: repeat(g.$grid-columns, 1fr);
   grid-template-rows: repeat(g.$grid-rows, 1fr);
+  overflow: hidden;
 }
 
 .win {
@@ -35,6 +37,7 @@
 @include g.respond("vertical-small-screen") {
   .container {
     @include g.size(100%, 100vh);
+    border-radius: 0;
   }
 }
 
@@ -43,5 +46,6 @@
     @include g.size(100%, 100vh);
     grid-template-columns: repeat(g.$grid-columns-horizontal, 1fr);
     grid-template-rows: repeat(g.$grid-rows-horizontal, 1fr);
+    border-radius: 0;
   }
 }

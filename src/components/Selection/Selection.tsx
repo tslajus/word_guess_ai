@@ -46,7 +46,7 @@ function CustomSelection({
   return (
     <div className={className} ref={containerRef}>
       <div
-        className={styles.selector}
+        className={`${styles.selector} ${showOptions && styles.selectorOpen}`}
         onClick={() => setShowOptions(!showOptions)}
       >
         <input

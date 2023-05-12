@@ -22,13 +22,14 @@
 }
 
 .startBtn {
-  @include g.size(100%);
   @include g.grid-position(19, 20, 1, 6);
+  @include g.border-radius(0, g.$border-radius, g.$border-radius);
 }
 
 .cancelBtn {
   @include g.size(100%);
   @include g.grid-position(19, 20, 7, -1);
+  @include g.border-radius(g.$border-radius, 0, 0);
 }
 
 .active {
@@ -56,15 +57,15 @@
   }
 
   .startBtn {
-    @include g.size(100%, 100%);
     @include g.grid-position(11, 12, 1, 6);
+    @include g.border-radius();
     background-color: g.$color-light;
     color: g.$color-black;
   }
 
   .cancelBtn {
-    @include g.size(100%);
     @include g.grid-position(11, 12, 6, 11);
+    @include g.border-radius();
   }
 
   .themes {

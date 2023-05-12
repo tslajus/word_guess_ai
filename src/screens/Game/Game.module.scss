@@ -10,6 +10,14 @@
   @include g.flex(stretch, space-between);
   height: g.$grid-row-height;
   gap: calc(100% / g.$grid-columns);
+
+  button:first-child {
+    @include g.border-radius(0, g.$border-radius, g.$border-radius);
+  }
+
+  button:last-child {
+    @include g.border-radius(g.$border-radius, 0, 0);
+  }
 }
 
 .backdrop {
@@ -35,8 +43,13 @@
     gap: 0;
 
     button:first-child {
+      @include g.border-radius();
       background-color: g.$color-light;
       color: g.$color-black;
+    }
+
+    button:last-child {
+      @include g.border-radius();
     }
   }
 }
