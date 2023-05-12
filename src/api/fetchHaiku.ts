@@ -1,10 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
-
-const configuration = new Configuration({
-  apiKey: import.meta.env.VITE_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
+import axios from "axios";
 
 const fetchHaiku = async (
   messageType: "result" | "question" | "win" | "lose" | "surrender",
@@ -48,22 +42,25 @@ const fetchHaiku = async (
   }
 
   try {
-    const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content: systemContent,
-        },
-        {
-          role: "user",
-          content: userContent,
-        },
-      ],
-    });
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/api/chat-completion`,
+      {
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content: systemContent,
+          },
+          {
+            role: "user",
+            content: userContent,
+          },
+        ],
+      }
+    );
 
     setIsLoading(false);
-    return completion.data.choices[0]?.message?.content || "Error";
+    return response.data.choices[0]?.message?.content || "Error";
   } catch (error) {
     console.error("Error:", error);
     setIsLoading(false);

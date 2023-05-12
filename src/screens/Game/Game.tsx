@@ -47,9 +47,6 @@ function Game() {
       if (answer === "Error") {
         errorStateSetter();
       } else {
-        console.log(answer);
-        console.log(secretWord);
-
         setCurrentHaiku(answer);
       }
     }
