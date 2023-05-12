@@ -34,6 +34,18 @@
   }
 }
 
+@include g.respond("vertical-screen") {
+  .form {
+    height: g.$grid-row-height-vertical;
+  }
+}
+
+@include g.respond("vertical-small-screen") {
+  .form {
+    height: g.$grid-row-height-vertical-small;
+  }
+}
+
 @include g.respond("horizontal-screen") {
   .form {
     @include g.flex(center, center, column);

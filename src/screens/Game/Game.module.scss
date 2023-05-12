@@ -25,6 +25,18 @@
   background-color: g.$color-gray;
 }
 
+@include g.respond("vertical-screen") {
+  .buttons {
+    height: g.$grid-row-height-vertical;
+  }
+}
+
+@include g.respond("vertical-small-screen") {
+  .buttons {
+    height: g.$grid-row-height-vertical-small;
+  }
+}
+
 @include g.respond("horizontal-screen") {
   .backdrop {
     @include g.grid-position(2, -1, 1, 10);

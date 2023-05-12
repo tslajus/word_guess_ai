@@ -19,6 +19,18 @@
   background-color: g.$color-black;
 }
 
+@include g.respond("vertical-screen") {
+  .row {
+    height: g.$grid-row-height-vertical;
+  }
+}
+
+@include g.respond("vertical-small-screen") {
+  .row {
+    height: g.$grid-row-height-vertical-small;
+  }
+}
+
 @include g.respond("horizontal-screen") {
   .container {
     @include g.flex(ends, space-between, column);

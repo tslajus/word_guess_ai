@@ -24,11 +24,19 @@ $border-radius: 0.5rem;
 $border-radius-lg: 1rem;
 
 $container-height: 70vh;
+$container-height-vertical: 85vh;
+$container-height-vertical-small: 100vh;
 $container-width: 35rem;
 $container-width-big: 60rem;
+
 $grid-rows: 20;
 $grid-columns: 11;
 $grid-row-height: calc($container-height / $grid-rows);
+$grid-row-height-vertical: calc($container-height-vertical / $grid-rows);
+$grid-row-height-vertical-small: calc(
+  $container-height-vertical-small / $grid-rows
+);
+
 $horizontal-padding: 0 $gap;
 $horizontal-padding-lg: 0 $gap-lg;
 $horizontal-padding-xl: 0 calc($gap-lg * 2);

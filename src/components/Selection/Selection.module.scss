@@ -66,6 +66,20 @@
   }
 }
 
+@include g.respond("vertical-screen") {
+  .selector,
+  .option {
+    height: g.$grid-row-height-vertical;
+  }
+}
+
+@include g.respond("vertical-small-screen") {
+  .selector,
+  .option {
+    height: g.$grid-row-height-vertical-small;
+  }
+}
+
 @include g.respond("horizontal-screen") {
   .selector,
   .option {
