@@ -31,6 +31,7 @@ function Game() {
   const [guessInputValue, setGuessInputValue] = useState("");
 
   const handleAsk = async () => {
+    console.log(selectedTheme);
     if (movesCount <= 0) {
       setCurrentHaiku(extractRandomString(haikus.noMoves));
     } else {
@@ -40,6 +41,7 @@ function Game() {
         "question",
         secretWord,
         setIsLoading,
+        selectedTheme,
         undefined,
         questionInputValue
       );
@@ -57,6 +59,7 @@ function Game() {
       "result",
       secretWord,
       setIsLoading,
+      undefined,
       guessInputValue
     );
 
@@ -64,7 +67,12 @@ function Game() {
       errorStateSetter();
     } else {
       if (stringCleaner(result) === "yes") {
-        const winHaiku = await fetchHaiku("win", secretWord, setIsLoading);
+        const winHaiku = await fetchHaiku(
+          "win",
+          secretWord,
+          setIsLoading,
+          selectedTheme
+        );
 
         if (winHaiku === "Error") {
           errorStateSetter();
@@ -76,6 +84,7 @@ function Game() {
           "lose",
           secretWord,
           setIsLoading,
+          selectedTheme,
           guessInputValue
         );
 

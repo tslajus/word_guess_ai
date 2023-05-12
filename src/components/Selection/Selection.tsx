@@ -51,7 +51,7 @@ function CustomSelection({
       >
         <input
           className={styles.selectedValue}
-          value={selectedLabel || ""}
+          value={selectedLabel?.toLocaleLowerCase() || ""}
           readOnly
         />
         <div className={`${styles.arrow} ${showOptions && styles.arrowDown}`} />

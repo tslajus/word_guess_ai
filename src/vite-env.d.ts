@@ -22,7 +22,6 @@ type GameContextType = {
   wordList: string[];
   setWordList: (theme: string[]) => void;
   allWordLists: Themes;
-  randomWordList: string[];
   movesCount: number;
   setMovesCount: (count: number) => void;
   levels: Levels;

@@ -12,7 +12,6 @@ function NewGame() {
     setSecretWord,
     setWordList,
     allWordLists,
-    randomWordList,
     setCurrentHaiku,
     isGameOn,
     setIsGameOn,
@@ -24,14 +23,18 @@ function NewGame() {
   const [selectedLevel, setSelectedLevel] = useState("easy");
 
   const handleStart = () => {
-    let selectedWordList =
-      selectedTheme === "random" ? randomWordList : allWordLists[selectedTheme];
+    let selectedThemeName =
+      selectedTheme === "Random"
+        ? extractRandomString(Object.keys(allWordLists))
+        : selectedTheme;
+    let selectedWordList = allWordLists[selectedThemeName];
     setWordList(selectedWordList);
     setSecretWord(extractRandomString(selectedWordList));
     setCurrentHaiku(extractRandomString(haikus.newGame));
     setMovesCount(levels[selectedLevel]);
     setIsGameOn(true);
     setCurrentScreen("Game");
+    setSelectedTheme(selectedThemeName);
   };
 
   const handleCancel = () => {
@@ -39,7 +42,7 @@ function NewGame() {
   };
 
   const themeOptions = [
-    { value: "random", label: "random" },
+    { value: "Random", label: "Random" },
     ...Object.keys(allWordLists).map((theme) => ({
       value: theme,
       label: theme,

@@ -14,7 +14,6 @@ const initialValues: GameContextType = {
   wordList: [],
   setWordList: () => {},
   allWordLists: listOfWords,
-  randomWordList: Object.values(listOfWords).flat(),
   currentHaiku: "",
   setCurrentHaiku: () => {},
   isGameOn: false,
@@ -35,9 +34,9 @@ const GameContextProvider: React.FC<GameContextProviderProps> = ({
 }) => {
   const [currentScreen, setCurrentScreen] = useState("New Game");
   const [secretWord, setSecretWord] = useState("cat");
-  const [wordList, setWordList] = useState(initialValues.randomWordList);
+  const [wordList, setWordList] = useState<string[]>([]);
   const [movesCount, setMovesCount] = useState(initialValues.levels.easy);
-  const [selectedTheme, setSelectedTheme] = useState("random");
+  const [selectedTheme, setSelectedTheme] = useState("Random");
   const [gameResult, setGameResult] = useState("none");
   const [currentHaiku, setCurrentHaiku] = useState(
     extractRandomString(haikus.newGame)
@@ -48,7 +47,6 @@ const GameContextProvider: React.FC<GameContextProviderProps> = ({
   const handleSetIsGameOn = (value: boolean) => {
     setIsGameOn(value);
     if (!value) {
-      setWordList(initialValues.randomWordList);
       setSecretWord("");
       setGameResult("none");
     }

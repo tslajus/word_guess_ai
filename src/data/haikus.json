@@ -1,12 +1,22 @@
 {
   "newGame": [
     "Ask questions for clues || Mind the moves, count them with care || One try, win or lose",
-    "Seek hints, question well, || Treasure each move left to make, || One guess, time will tell."
+    "Seek hints, question well, || Treasure each move left to make, || One guess, time will tell.",
+    "Ask questions for clues || Treasure each move left to make,  || One try, win or lose",
+    "Ask and you shall find || The secret word that’s waiting || One try, win or lose",
+    "Ask for clues, be wise || A single chance to conquer || The secret word's maze",
+    "Clues shall be your guide || In this game of mystery || One guess, make it count"
   ],
   "noMoves": [
-    "Out of moves, you stand || Time for a guess, now arrives || Choose wisely, my friend"
+    "Out of moves, you stand || Time for a guess, now arrives || Choose wisely, my friend",
+    "Moves are spent and gone || The moment to guess is here || Ponder and decide",
+    "No more moves remain || Your final guess, make it count || Fortune favors brave",
+    "All your moves are spent || Time to guess the secret word || Wisdom be your guide",
+    "No moves left to play || The guessing game reaches end || Trust your intuition"
   ],
   "error": [
-    "A glitch has occurred || Paths entwined, confusion reigns || Seek calm and restart"
+    "A glitch has occurred || Paths entwined, confusion reigns || Seek calm and restart",
+    "An error appears || Chaos whispers in the code || Patience, try again",
+    "Mistakes in the void || Tangled webs of code confound || Refresh, start anew"
   ]
 }
