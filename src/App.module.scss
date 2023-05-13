@@ -11,3 +11,9 @@
   bottom: 0;
   right: 0;
 }
+
+@supports (min-height: 100dvh) {
+  .background {
+    min-height: 100dvh;
+  }
+}
