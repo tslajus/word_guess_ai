@@ -1,7 +1,14 @@
 @use "@/sass/index.scss" as g;
 
 .logo {
-  @include g.flex(start, start, column);
+  @include g.flex(start, space-between, column);
+  @include g.font-properties(
+    g.$font-secondary,
+    g.$font-size-md,
+    g.$color-gray,
+    g.$font-weight-bold
+  );
+  letter-spacing: 0.3rem;
   position: absolute;
   top: 2rem;
   left: 2rem;

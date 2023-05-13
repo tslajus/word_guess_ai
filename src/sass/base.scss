@@ -1,9 +1,9 @@
 @use "./mixins.scss" as m;
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fauna+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&family=Karla:wght@400;700;800&display=swap");
 
 :root {
   font-size: 62.5%;
-  font-family: "Cinzel", serif;
+  font-family: "Karla", sans-serif;
   line-height: 1.5;
   font-weight: 700;
 

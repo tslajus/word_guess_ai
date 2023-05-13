@@ -30,7 +30,7 @@
 }
 
 .selectedValue {
-  @include g.font-properties(g.$font-primary, g.$font-size-md, g.$color-light);
+  @include g.font-properties(g.$font-primary, g.$font-size-sm, g.$color-light);
   max-width: calc(100% - g.$gap-lg);
   height: 100%;
   background-color: g.$color-black;

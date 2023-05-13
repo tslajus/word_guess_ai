@@ -56,7 +56,7 @@ function NewGame() {
   return (
     <>
       <div className={styles.backdrop} />
-      <header className={styles.header}>New Game</header>
+      <header className={styles.header}>NEW GAME</header>
 
       <div className={styles.levels}>
         {Object.keys(levels).map((level) => (
@@ -69,7 +69,7 @@ function NewGame() {
         ))}
       </div>
 
-      <div className={styles.themeLabel}>Theme:</div>
+      <div className={styles.themeLabel}>THEME:</div>
 
       <Selection
         className={styles.themes}

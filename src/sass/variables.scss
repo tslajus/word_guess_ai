@@ -10,12 +10,16 @@ $color-red-shade: #a62e2d;
 $color-yellow: #f6b429;
 $color-brown: #5b312a;
 
-$font-primary: "Cinzel", serif;
-$font-secondary: "Fauna One", serif;
+$font-primary: "Karla", sans-serif;
+$font-secondary: "Inconsolata", monospace;
 
-$font-size-md: 1.3rem;
+$font-size-sm: 1.2rem;
+$font-size-md: 1.4rem;
 $font-size-lg: 2.4rem;
 $font-size-xl: 4.8rem;
+
+$font-weight-regular: 400;
+$font-weight-bold: 900;
 
 $gap: 1rem;
 $gap-lg: 2rem;
@@ -26,7 +30,7 @@ $border-radius-lg: 1rem;
 $container-height: 70vh;
 $container-height-vertical: 85vh;
 $container-height-vertical-small: 100vh;
-$container-width: 35rem;
+$container-width: 40rem;
 $container-width-big: 60rem;
 
 $grid-rows: 20;

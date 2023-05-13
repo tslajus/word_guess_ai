@@ -3,9 +3,9 @@ import styles from "./Logo.module.scss";
 function Logo() {
   return (
     <div className={styles.logo}>
-      <span>word</span>
-      <span>guessing</span>
-      <span>haiku</span>
+      <span>WORD</span>
+      <span>GUESSING</span>
+      <span>HAIKU</span>
     </div>
   );
 }

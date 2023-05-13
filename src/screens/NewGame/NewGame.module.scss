@@ -2,7 +2,12 @@
 
 .header {
   @include g.flex;
-  @include g.font-properties(g.$font-primary, g.$font-size-xl, g.$color-black);
+  @include g.font-properties(
+    g.$font-secondary,
+    g.$font-size-xl,
+    g.$color-black,
+    g.$font-weight-bold
+  );
   @include g.grid-position(1, 7, 1, -1);
 }
 
@@ -18,6 +23,7 @@
 .themeLabel {
   @include g.flex(center, end);
   @include g.grid-position(10, 11, 2, 6);
+  font-size: g.$font-size-md;
   color: g.$color-black;
 }
 
@@ -43,12 +49,8 @@
 @include g.respond("horizontal-screen") {
   .header {
     @include g.flex;
-    @include g.font-properties(
-      g.$font-primary,
-      g.$font-size-xl,
-      g.$color-light
-    );
     @include g.grid-position(3, 11, 1, 11);
+    color: g.$color-light;
   }
 
   .levels {
@@ -59,8 +61,16 @@
   .startBtn {
     @include g.grid-position(11, 12, 1, 6);
     @include g.border-radius();
+    @include g.font-properties(
+      g.$font-primary,
+      g.$font-size-md,
+      g.$color-black
+    );
     background-color: g.$color-light;
-    color: g.$color-black;
+
+    &:hover {
+      color: g.$color-light;
+    }
   }
 
   .cancelBtn {
@@ -76,7 +86,6 @@
   .themeLabel {
     @include g.flex(center, end);
     @include g.grid-position(2, 3, 12, 14);
-    color: g.$color-black;
   }
 
   .backdrop {

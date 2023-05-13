@@ -2,7 +2,11 @@
 
 .loader {
   @include g.flex;
-  @include g.font-properties(g.$font-primary, g.$font-size-lg, g.$color-light);
+  @include g.font-properties(
+    g.$font-secondary,
+    g.$font-size-lg,
+    g.$color-light
+  );
   @include g.grid-position(1, -1, 1, -1);
   background-color: g.$color-gray;
 }
@@ -13,8 +17,10 @@
   &:after {
     content: "";
     position: absolute;
+    letter-spacing: 0.2rem;
     top: 0;
     left: 100%;
+    margin-left: 0.2rem;
     animation: dots 2s infinite;
   }
 }

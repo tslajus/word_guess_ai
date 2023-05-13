@@ -26,7 +26,7 @@ function Button({
       disabled={disabled}
       {...rest}
     >
-      {text}
+      {text.toLocaleUpperCase()}
     </button>
   );
 }
