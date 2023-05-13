@@ -38,6 +38,9 @@
   .container {
     @include g.size(100%, 100vh);
     border-radius: 0;
+    @supports (min-height: 100dvh) {
+      min-height: 100dvh;
+    }
   }
 }
 
@@ -47,5 +50,9 @@
     grid-template-columns: repeat(g.$grid-columns-horizontal, 1fr);
     grid-template-rows: repeat(g.$grid-rows-horizontal, 1fr);
     border-radius: 0;
+
+    @supports (min-height: 100dvh) {
+      min-height: 100dvh;
+    }
   }
 }
