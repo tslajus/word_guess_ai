@@ -66,6 +66,11 @@
       @include g.border-radius();
       background-color: g.$color-light;
       color: g.$color-black;
+
+      &:hover {
+        background-color: g.$color-brown;
+        color: g.$color-light;
+      }
     }
 
     button:last-child {

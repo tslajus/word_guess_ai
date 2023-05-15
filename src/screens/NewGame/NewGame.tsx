@@ -2,7 +2,7 @@ import haikus from "@/data/haikus.json";
 import { useState, useContext } from "react";
 import { GameContext } from "@/contexts/GameContext";
 import { extractRandomString } from "@/helpers";
-import { Button, Selection } from "@/components";
+import { Header, Button, Selection } from "@/components";
 
 import styles from "./NewGame.module.scss";
 
@@ -56,7 +56,9 @@ function NewGame() {
   return (
     <>
       <div className={styles.backdrop} />
-      <header className={styles.header}>NEW GAME</header>
+      <Header isCentered>Guess The Secret Word Through Haiku Riddles</Header>
+
+      <div className={styles.title}>NEW GAME</div>
 
       <div className={styles.levels}>
         {Object.keys(levels).map((level) => (
