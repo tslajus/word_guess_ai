@@ -31,7 +31,6 @@ function Game() {
   const [guessInputValue, setGuessInputValue] = useState("");
 
   const handleAsk = async () => {
-    console.log(selectedTheme);
     if (movesCount <= 0) {
       setCurrentHaiku(extractRandomString(haikus.noMoves));
     } else {
