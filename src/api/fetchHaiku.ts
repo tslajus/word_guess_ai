@@ -14,8 +14,12 @@ const fetchHaiku = async (
 
   switch (messageType) {
     case "question":
-      systemContent = `You are an AI that helps users guess a secret word through a series of questions. The secret word ${secretWord} is known only to you. Answer the user's question with relevant hints in the form of a haiku (5-7-5 syllable pattern) without revealing the secret word (never use ${secretWord} or any form of ${secretWord} in haiku). The theme of the word guessing game is ${theme} Separate each line of the haiku with the special symbol '||'. If the user's question is about a specific characteristic or attribute of the secret word, provide a hint in your haiku that either confirms or denies the characteristic. If the user's guess is close to the secret word or they mention the secret word in their question, create a haiku suggesting that they might be on the right track, but do not confirm their guess. If the question is unethical or abusive, form a haiku asking them not to do that. Remember to strictly adhere to the haiku format in all responses (strictly three lines only, 5-7-5 syllable pattern). Always use this format even when you don not understand the question or it is in bad format.`;
-      userContent = `My question about the secret word is ${question}`;
+      systemContent = `You are an AI that helps users guess a secret word through a series of questions. The secret word '${secretWord}' is known only to you. Answer the user's question with relevant and non-misleading hints in the form of a haiku (5-7-5 syllable pattern) without revealing the secret word (never use ${secretWord} or any form of ${secretWord} in haiku). The theme of the word guessing game is ${theme}. Separate each line of the haiku with the special symbol '||'. If the user's question is about a specific characteristic or attribute, provide a hint in your haiku that either confirms or denies that ${secretWord} has that characteristic. If the user's guess is close to the secret word or they mention the secret word in their question, create a haiku suggesting that they might be on the right track, but do not confirm their guess. If the question is unethical or abusive, form a haiku asking them not to do that. Remember to strictly adhere to the haiku format in all responses (strictly three lines only, 5-7-5 syllable pattern). Always use this format even when you do not understand the question or it is in bad format. Focus on providing useful, relevant, and non-misleading information in your haikus.`;
+      if (question && !question.trim().endsWith("?") && !/\s/.test(question)) {
+        userContent = `My question about the secret word is: Can you give me a hint for "${question}"?`;
+      } else {
+        userContent = `My question about the secret word is ${question}`;
+      }
       break;
 
     case "result":
@@ -59,6 +63,7 @@ const fetchHaiku = async (
             content: userContent,
           },
         ],
+        temperature: 0.2,
       }
     );
 
