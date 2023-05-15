@@ -12,8 +12,14 @@
   right: 0;
 }
 
-@supports (min-height: 100dvh) {
-  .background {
-    min-height: 100dvh;
+@include g.respond("vertical-small-screen") {
+  .win {
+    background-color: g.$color-blue;
+  }
+  .lose {
+    background-color: g.$color-red;
+  }
+  .none {
+    background-color: g.$color-light;
   }
 }

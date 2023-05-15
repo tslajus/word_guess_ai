@@ -35,6 +35,14 @@
   .buttons {
     height: g.$grid-row-height-vertical-small;
   }
+  .form::after {
+    content: "";
+    background-color: g.$color-gray;
+    width: 100%;
+    height: calc(100vh - g.$container-height-vertical-small + 0.5rem);
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 @include g.respond("horizontal-screen") {

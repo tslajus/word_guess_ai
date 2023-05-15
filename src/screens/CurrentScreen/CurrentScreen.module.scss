@@ -36,26 +36,17 @@
 
 @include g.respond("vertical-small-screen") {
   .container {
-    @include g.size(100%, 100vh);
+    @include g.size(100%, 95%);
     border-radius: 0;
-  }
-  @supports (min-height: 100dvh) {
-    .container {
-      min-height: 100dvh;
-    }
+    align-self: start;
   }
 }
 
 @include g.respond("horizontal-screen") {
   .container {
-    @include g.size(100%, 100vh);
+    @include g.size(100%, 100%);
     grid-template-columns: repeat(g.$grid-columns-horizontal, 1fr);
     grid-template-rows: repeat(g.$grid-rows-horizontal, 1fr);
     border-radius: 0;
-  }
-  @supports (min-height: 100dvh) {
-    .container {
-      min-height: 100dvh;
-    }
   }
 }

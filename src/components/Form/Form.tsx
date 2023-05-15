@@ -1,4 +1,4 @@
-import { FormEvent, ChangeEvent, useState, useEffect } from "react";
+import { FormEvent, ChangeEvent, useState } from "react";
 import { Button } from "@/components";
 
 import styles from "./Form.module.scss";
@@ -18,28 +18,33 @@ function Form({
   submitText,
   placeholder = "",
 }: Form) {
-  const [currentPlaceholder, setCurrentPlaceholder] = useState(placeholder);
-
-  useEffect(() => {
-    setCurrentPlaceholder(placeholder);
-  }, [placeholder]);
+  const [inputError, setInputError] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit();
-    onInputChange("");
+    if (inputValue.trim() === "") {
+      setInputError(true);
+    } else {
+      setInputError(false);
+      onSubmit();
+      onInputChange("");
+    }
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} ${inputError ? styles.error : ""}`}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         value={inputValue}
-        placeholder={currentPlaceholder}
+        placeholder={placeholder}
         maxLength={30}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          onInputChange(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setInputError(false);
+          onInputChange(e.target.value);
+        }}
       />
       <Button type="submit" text={submitText} />
     </form>

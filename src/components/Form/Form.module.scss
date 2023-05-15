@@ -34,6 +34,15 @@
   }
 }
 
+.error {
+  input {
+    background-color: g.$color-red;
+    &::placeholder {
+      color: g.$color-light;
+    }
+  }
+}
+
 @include g.respond("vertical-screen") {
   .form {
     height: g.$grid-row-height-vertical;
