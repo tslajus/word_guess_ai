@@ -77,7 +77,7 @@ function NewGame() {
       <Selection
         className={styles.themes}
         options={themeOptions}
-        value={selectedTheme}
+        value={newSelectedTheme}
         onChange={handleThemeChange}
       />
 
