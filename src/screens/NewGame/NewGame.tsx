@@ -21,12 +21,13 @@ function NewGame() {
     setSelectedTheme,
   } = useContext(GameContext);
   const [selectedLevel, setSelectedLevel] = useState("easy");
+  const [newSelectedTheme, setNewSelectedTheme] = useState(selectedTheme);
 
   const handleStart = () => {
     let selectedThemeName =
-      selectedTheme === "Random"
+      newSelectedTheme === "Random"
         ? extractRandomString(Object.keys(allWordLists))
-        : selectedTheme;
+        : newSelectedTheme;
     let selectedWordList = allWordLists[selectedThemeName];
     setWordList(selectedWordList);
     setSecretWord(extractRandomString(selectedWordList));
@@ -50,7 +51,7 @@ function NewGame() {
   ];
 
   const handleThemeChange = (value: string) => {
-    setSelectedTheme(value);
+    setNewSelectedTheme(value);
   };
 
   return (
