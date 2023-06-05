@@ -2,7 +2,7 @@
 
 .loader {
   @include flex;
-  @include font-properties($font-secondary, $font-size-sm, $color-light);
+  @include font-properties($font-primary, $font-size-sm, $color-light);
   @include grid-position(1, -1, 1, -1);
   background-color: $color-gray;
 }
