@@ -1,22 +1,18 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .form {
-  @include g.flex(stretch, space-between);
-  @include g.size(auto, g.$grid-row-height);
-  gap: calc(100% / g.$grid-columns);
+  @include flex(stretch, space-between);
+  @include size(auto, $grid-row-height);
+  gap: calc(100% / $grid-columns);
 
   input {
-    @include g.size(100%);
-    @include g.border-radius(0, g.$border-radius, g.$border-radius);
-    @include g.font-properties(
-      g.$font-secondary,
-      g.$font-size-md,
-      g.$color-black
-    );
-    background-color: g.$color-light;
+    @include size(100%);
+    @include border-radius(0, $border-radius, $border-radius);
+    @include font-properties($font-secondary, $font-size-sm, $color-dark);
+    background-color: $color-light;
     border: none;
 
-    padding: g.$horizontal-padding;
+    padding: $horizontal-padding;
     flex: 7;
 
     &:focus {
@@ -24,48 +20,52 @@
     }
 
     &::placeholder {
-      color: g.$color-gray;
+      color: $color-gray;
+    }
+
+    &:focus-visible {
+      @include color($color-yellow, $color-dark);
     }
   }
 
   button {
-    @include g.border-radius(g.$border-radius, 0, 0);
+    @include border-radius($border-radius, 0, 0);
     flex: 3;
   }
 }
 
 .error {
   input {
-    background-color: g.$color-red;
+    background-color: $color-red;
     &::placeholder {
-      color: g.$color-light;
+      color: $color-light;
     }
   }
 }
 
-@include g.respond("vertical-screen") {
+@include respond("vertical-screen") {
   .form {
-    height: g.$grid-row-height-vertical;
+    height: $grid-row-height-vertical;
   }
 }
 
-@include g.respond("vertical-small-screen") {
+@include respond("vertical-small-screen") {
   .form {
-    height: g.$grid-row-height-vertical-small;
+    height: $grid-row-height-vertical-small;
   }
 }
 
-@include g.respond("horizontal-screen") {
+@include respond("horizontal-screen") {
   .form {
-    @include g.flex(center, center, column);
-    @include g.size(100%, calc(g.$grid-row-height-horizontal * 3));
+    @include flex(center, center, column);
+    @include size(100%, calc($grid-row-height-horizontal * 3));
 
     gap: 0;
 
     input,
     button {
-      @include g.border-radius();
-      width: calc(100% - 100vw / g.$grid-columns-horizontal * 2);
+      @include border-radius();
+      width: calc(100% - 100vw / $grid-columns-horizontal * 2);
     }
 
     button {
@@ -73,7 +73,7 @@
     }
 
     input {
-      padding: g.$horizontal-padding-lg;
+      padding: $horizontal-padding-lg;
       flex: 2;
     }
   }

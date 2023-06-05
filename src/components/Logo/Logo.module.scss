@@ -1,26 +1,25 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .logo {
-  @include g.flex(start, space-between, column);
-  @include g.font-properties(
-    g.$font-secondary,
-    g.$font-size-md,
-    g.$color-gray,
-    g.$font-weight-bold
+  @include flex(start, space-between, column);
+  @include font-properties(
+    $font-primary,
+    $font-size-sm,
+    $color-dark,
+    $font-weight-bold
   );
-  letter-spacing: 0.3rem;
   position: absolute;
   top: 2rem;
   left: 2rem;
 }
 
-@include g.respond("vertical-screen") {
+@include respond("vertical-screen") {
   .logo {
     display: none;
   }
 }
 
-@include g.respond("horizontal-screen") {
+@include respond("horizontal-screen") {
   .logo {
     display: none;
   }

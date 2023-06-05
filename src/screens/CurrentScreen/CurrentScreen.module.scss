@@ -1,52 +1,40 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .container {
-  @include g.size(g.$container-width, g.$container-height);
-  @include g.border-radius(g.$border-radius-lg);
+  @include size($container-width, $container-height);
+  @include border-radius($border-radius-lg);
   display: grid;
-  grid-template-columns: repeat(g.$grid-columns, 1fr);
-  grid-template-rows: repeat(g.$grid-rows, 1fr);
+  grid-template-columns: repeat($grid-columns, 1fr);
+  grid-template-rows: repeat($grid-rows, 1fr);
+  background-color: $color-light;
   overflow: hidden;
 }
 
-.win {
-  background-color: g.$color-blue;
-}
-
-.lose,
-.error {
-  background-color: g.$color-red;
-}
-
-.none {
-  background-color: g.$color-light;
-}
-
-@include g.respond("big-desktop") {
+@include respond("big-desktop") {
   .container {
-    @include g.size(g.$container-width-big, g.$container-height);
+    @include size($container-width-big, $container-height);
   }
 }
 
-@include g.respond("vertical-screen") {
+@include respond("vertical-screen") {
   .container {
-    @include g.size(80%, 85%);
+    @include size(80%, 85%);
   }
 }
 
-@include g.respond("vertical-small-screen") {
+@include respond("vertical-small-screen") {
   .container {
-    @include g.size(100%, 95%);
+    @include size(100%, 95%);
     border-radius: 0;
     align-self: start;
   }
 }
 
-@include g.respond("horizontal-screen") {
+@include respond("horizontal-screen") {
   .container {
-    @include g.size(100%, 100%);
-    grid-template-columns: repeat(g.$grid-columns-horizontal, 1fr);
-    grid-template-rows: repeat(g.$grid-rows-horizontal, 1fr);
+    @include size(100%, 100%);
+    grid-template-columns: repeat($grid-columns-horizontal, 1fr);
+    grid-template-rows: repeat($grid-rows-horizontal, 1fr);
     border-radius: 0;
   }
 }

@@ -21,7 +21,9 @@ function Button({
   return (
     <button
       type={type}
-      className={`${styles.btn} ${isLight && styles.btnLight} ${className}`}
+      className={`${styles.btn} ${
+        isLight && styles["btn--light"]
+      } ${className}`}
       onClick={onClick}
       disabled={disabled}
       {...rest}

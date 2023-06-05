@@ -28,22 +28,38 @@ function EndGame() {
     setIsGameOn(false);
   };
 
+  let headerStart;
+  let headerEnd;
+
+  switch (gameResult) {
+    case "win":
+      headerStart = "You won!";
+      headerEnd = `The secret word was ${secretWord.toLocaleUpperCase()}`;
+      break;
+
+    case "lose":
+      headerStart = "You Lost!";
+      headerEnd = `The secret word was ${secretWord.toLocaleUpperCase()}`;
+      break;
+
+    case "error":
+      headerStart = "Error...";
+      headerEnd = `Please try again!`;
+      break;
+  }
+
   return (
     <>
       <Header>
-        <p>
-          {gameResult === "win"
-            ? "Congratulations!"
-            : gameResult === "lose"
-            ? `The secret word was ${secretWord.toLocaleUpperCase()}`
-            : "An error occured, try again"}
-        </p>
+        <p>{headerStart}</p>
+        <p>{headerEnd}</p>
       </Header>
 
       <HaikuCard />
       <Button
         className={styles.button}
         text="new game"
+        isLight
         onClick={handleNewGame}
       />
     </>

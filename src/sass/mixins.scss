@@ -1,4 +1,4 @@
-@use "./variables.scss" as g;
+@import "./variables.scss";
 
 @mixin flex(
   $align-items: center,
@@ -12,10 +12,10 @@
 }
 
 @mixin font-properties(
-  $font-family: g.$font-secondary,
-  $font-size: g.$font-size-md,
-  $color: g.$color-light,
-  $font-weight: g.$font-weight-regular
+  $font-family: $font-secondary,
+  $font-size: $font-size-sm,
+  $color: $color-light,
+  $font-weight: $font-weight-regular
 ) {
   font-family: $font-family;
   font-size: $font-size;
@@ -26,6 +26,11 @@
 @mixin size($width: auto, $height: auto) {
   width: $width;
   height: $height;
+}
+
+@mixin color($background: auto, $font: auto) {
+  background-color: $background;
+  color: $font;
 }
 
 @mixin grid-position(
@@ -54,7 +59,7 @@
       @content;
     }
   } @else if $breakpoint == "vertical-small-screen" {
-    @media (max-width: 500px) and (orientation: portrait) {
+    @media (max-width: 510px) and (orientation: portrait) {
       @content;
     }
   } @else if $breakpoint == "horizontal-screen" {

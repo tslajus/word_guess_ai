@@ -59,7 +59,10 @@ function NewGame() {
       <div className={styles.backdrop} />
       <Header isCentered>Guess The Secret Word Through Haiku Riddles</Header>
 
-      <div className={styles.title}>NEW GAME</div>
+      <div className={styles.title}>
+        <span>New</span>
+        <span>Game</span>
+      </div>
 
       <div className={styles.levels}>
         {Object.keys(levels).map((level) => (
@@ -72,7 +75,7 @@ function NewGame() {
         ))}
       </div>
 
-      <div className={styles.themeLabel}>THEME:</div>
+      <div className={styles["theme-label"]}>THEME:</div>
 
       <Selection
         className={styles.themes}
@@ -81,10 +84,14 @@ function NewGame() {
         onChange={handleThemeChange}
       />
 
-      <Button className={styles.startBtn} text="start" onClick={handleStart} />
+      <Button
+        className={styles["start-btn"]}
+        text="start"
+        onClick={handleStart}
+      />
       {isGameOn && (
         <Button
-          className={styles.cancelBtn}
+          className={styles["cancel-btn"]}
           text="cancel"
           isLight
           onClick={handleCancel}

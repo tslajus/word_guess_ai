@@ -1,80 +1,86 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .form {
-  @include g.flex(stretch, space-between, column);
-  @include g.grid-position(16, 20, 1, -1);
+  @include flex(stretch, space-between, column);
+  @include grid-position(16, 20, 1, -1);
   height: 100%;
 }
 
 .buttons {
-  @include g.flex(stretch, space-between);
-  height: g.$grid-row-height;
-  gap: calc(100% / g.$grid-columns);
+  @include flex(stretch, space-between);
+  height: $grid-row-height;
+  gap: calc(100% / $grid-columns);
 
   button:first-child {
-    @include g.border-radius(0, g.$border-radius, g.$border-radius);
+    @include border-radius(0, $border-radius, $border-radius);
   }
 
   button:last-child {
-    @include g.border-radius(g.$border-radius, 0, 0);
+    @include border-radius($border-radius, 0, 0);
   }
 }
 
 .backdrop {
-  @include g.grid-position(15, -1, 1, -1);
-  background-color: g.$color-gray;
+  @include grid-position(15, -1, 1, -1);
+  background-color: $color-gray;
 }
 
-@include g.respond("vertical-screen") {
+.bold {
+  font-family: $font-primary;
+}
+
+@include respond("vertical-screen") {
   .buttons {
-    height: g.$grid-row-height-vertical;
+    height: $grid-row-height-vertical;
   }
 }
 
-@include g.respond("vertical-small-screen") {
+@include respond("vertical-small-screen") {
   .buttons {
-    height: g.$grid-row-height-vertical-small;
+    height: $grid-row-height-vertical-small;
   }
   .form::after {
     content: "";
-    background-color: g.$color-gray;
+    background-color: $color-gray;
     width: 100%;
-    height: calc(100vh - g.$container-height-vertical-small + 0.5rem);
+    height: calc(100vh - $container-height-vertical-small + 0.5rem);
     position: absolute;
     bottom: 0;
   }
+
+  .bold {
+    font-family: $font-secondary;
+  }
 }
 
-@include g.respond("horizontal-screen") {
+@include respond("horizontal-screen") {
   .backdrop {
-    @include g.grid-position(2, -1, 1, 10);
-    background-color: g.$color-black;
+    @include grid-position(2, -1, 1, 10);
+    background-color: $color-dark;
   }
 
   .form {
-    @include g.flex(stretch, space-between, column);
-    @include g.grid-position(3, 12, 1, 10);
+    @include flex(stretch, space-between, column);
+    @include grid-position(3, 12, 1, 10);
     height: 100%;
   }
 
   .buttons {
-    @include g.flex(stretch, space-between);
-    height: g.$grid-row-height-horizontal;
+    @include flex(stretch, space-between);
+    height: $grid-row-height-horizontal;
     gap: 0;
 
     button:first-child {
-      @include g.border-radius();
-      background-color: g.$color-light;
-      color: g.$color-black;
+      @include border-radius();
+      @include color($color-light, $color-dark);
 
       &:hover {
-        background-color: g.$color-brown;
-        color: g.$color-light;
+        @include color($color-yellow, $color-dark);
       }
     }
 
     button:last-child {
-      @include g.border-radius();
+      @include border-radius();
     }
   }
 }

@@ -20,6 +20,12 @@ function CustomSelection({
   const [showOptions, setShowOptions] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      setShowOptions(!showOptions);
+    }
+  };
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       containerRef.current &&
@@ -46,15 +52,22 @@ function CustomSelection({
   return (
     <div className={className} ref={containerRef}>
       <div
-        className={`${styles.selector} ${showOptions && styles.selectorOpen}`}
+        className={`${styles.selector} ${
+          showOptions && styles["selector--open"]
+        }`}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
         onClick={() => setShowOptions(!showOptions)}
       >
         <input
-          className={styles.selectedValue}
+          className={styles["selected-value"]}
           value={selectedLabel?.toLocaleUpperCase() || ""}
           readOnly
+          tabIndex={-1}
         />
-        <div className={`${styles.arrow} ${showOptions && styles.arrowDown}`} />
+        <div
+          className={`${styles.arrow} ${showOptions && styles["arrow-down"]}`}
+        />
       </div>
 
       {showOptions && (
@@ -66,6 +79,7 @@ function CustomSelection({
                 key={option.value}
                 className={styles.option}
                 onClick={() => handleSelect(option.value)}
+                tabIndex={0}
               >
                 {option.label}
               </div>

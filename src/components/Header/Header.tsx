@@ -14,9 +14,11 @@ function Header({ children, isCentered = false }: HeaderProps) {
 
   return (
     <header
-      className={`${styles.header} ${isCentered && styles.centered} ${
-        styles[gameResult]
-      }`}
+      className={`${styles.header} 
+      ${styles[`header--${gameResult}`]}
+      
+      
+      ${isCentered && styles.centered} `}
     >
       {children}
     </header>

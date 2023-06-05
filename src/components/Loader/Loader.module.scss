@@ -1,14 +1,10 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .loader {
-  @include g.flex;
-  @include g.font-properties(
-    g.$font-secondary,
-    g.$font-size-lg,
-    g.$color-light
-  );
-  @include g.grid-position(1, -1, 1, -1);
-  background-color: g.$color-gray;
+  @include flex;
+  @include font-properties($font-secondary, $font-size-sm, $color-light);
+  @include grid-position(1, -1, 1, -1);
+  background-color: $color-gray;
 }
 
 .text {

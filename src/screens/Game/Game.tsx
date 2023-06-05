@@ -121,8 +121,14 @@ function Game() {
   return (
     <>
       <Header>
-        <p>Theme: {selectedTheme.toUpperCase()}</p>
-        <p>Moves left: {movesCount}</p>
+        <p>
+          <span className={styles.bold}>Theme:</span>
+          {selectedTheme.toUpperCase()}
+        </p>
+        <p>
+          <span className={styles.bold}>Moves left:</span>
+          {movesCount}
+        </p>
       </Header>
 
       <HaikuCard />

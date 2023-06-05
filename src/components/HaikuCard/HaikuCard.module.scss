@@ -1,46 +1,54 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .container {
-  @include g.flex(stretch, space-between, column);
-  @include g.grid-position(6, 10, 2, 11);
-  @include g.size(auto, 100%);
+  @include flex(stretch, space-between, column);
+  @include grid-position(6, 10, 2, 11);
+  @include size(auto, 100%);
 }
 
 .row {
-  @include g.flex;
-  @include g.size(fit-content, g.$grid-row-height);
-  @include g.border-radius(g.$border-radius);
-  @include g.font-properties(
-    g.$font-secondary,
-    g.$font-size-md,
-    g.$color-light
-  );
-  padding: g.$horizontal-padding;
-  background-color: g.$color-black;
-}
+  @include flex;
+  @include size(fit-content, $grid-row-height);
+  @include border-radius($border-radius);
+  @include font-properties($font-secondary, $font-size-sm);
+  padding: $horizontal-padding;
+  color: $color-light;
 
-@include g.respond("vertical-screen") {
-  .row {
-    height: g.$grid-row-height-vertical;
+  &--none {
+    background-color: $color-dark;
+  }
+
+  &--win {
+    @include color($color-yellow, $color-dark);
+  }
+  &--lose,
+  &--error {
+    background-color: $color-red;
   }
 }
 
-@include g.respond("vertical-small-screen") {
+@include respond("vertical-screen") {
   .row {
-    height: g.$grid-row-height-vertical-small;
+    height: $grid-row-height-vertical;
   }
 }
 
-@include g.respond("horizontal-screen") {
+@include respond("vertical-small-screen") {
+  .row {
+    height: $grid-row-height-vertical-small;
+  }
+}
+
+@include respond("horizontal-screen") {
   .container {
-    @include g.flex(ends, space-between, column);
-    @include g.grid-position(5, 9, 11, -1);
+    @include flex(ends, space-between, column);
+    @include grid-position(5, 9, 11, -1);
     margin: 0 auto;
   }
 
   .row {
-    @include g.size(fit-content, g.$grid-row-height-horizontal);
-    @include g.border-radius();
-    padding: g.$horizontal-padding-lg;
+    @include size(fit-content, $grid-row-height-horizontal);
+    @include border-radius();
+    padding: $horizontal-padding-lg;
   }
 }

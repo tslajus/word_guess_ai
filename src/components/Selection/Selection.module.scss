@@ -1,93 +1,106 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .selector {
-  @include g.flex(center, space-between);
-  @include g.size(100%, g.$grid-row-height);
-  @include g.border-radius(g.$border-radius, 0, 0);
+  @include flex(center, space-between);
+  @include size(100%, $grid-row-height);
+  @include border-radius($border-radius, 0, 0);
   cursor: pointer;
-  background-color: g.$color-black;
-  padding: g.$horizontal-padding;
+  background-color: $color-dark;
 
-  &Open {
+  padding: $horizontal-padding;
+  user-select: none;
+
+  &--open {
     border-bottom-left-radius: 0;
+  }
+
+  &:focus-visible {
+    @include color($color-yellow, $color-dark);
+    outline: none;
+
+    &:focus-within {
+      > * {
+        @include color($color-yellow, $color-dark);
+      }
+    }
   }
 }
 
-.selectedValue,
+.selected-value,
 .option {
-  @include g.flex(center, start);
-  @include g.font-properties(
-    g.$font-secondary,
-    g.$font-size-md,
-    g.$color-light
-  );
+  @include flex(center, start);
+  @include font-properties($font-secondary, $font-size-sm, $color-light);
   border: none;
   cursor: pointer;
 
-  &:focus {
+  &:focus-visible {
     outline: none;
   }
 }
 
-.selectedValue {
-  @include g.font-properties(g.$font-primary, g.$font-size-sm, g.$color-light);
-  max-width: calc(100% - g.$gap-lg);
+.selected-value {
+  @include font-properties($font-secondary, $font-size-sm, $color-light);
+  max-width: calc(100% - $gap-lg);
   height: 100%;
-  background-color: g.$color-black;
+  background-color: $color-dark;
   flex: 1;
 }
 
 .option {
   max-width: 100%;
-  height: g.$grid-row-height;
-  background-color: g.$color-gray;
-  padding: g.$horizontal-padding;
-  transition: background-color 0.2s;
+  height: $grid-row-height;
+  background-color: $color-gray;
+  padding: $horizontal-padding;
 
   &:hover {
-    background-color: g.$color-brown;
+    background-color: $color-yellow;
+    color: $color-dark;
   }
 
   &:last-child {
-    border-bottom-left-radius: g.$border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &:focus-visible {
+    @include color($color-yellow, $color-dark);
   }
 }
 
 .arrow {
-  @include g.size(0, 0);
+  @include size(0, 0);
   border-top: 0.6rem solid transparent;
   border-bottom: 0.6rem solid transparent;
 
-  border-right: 0.8rem solid g.$color-light;
-  transition: all 0.2s;
+  border-right: 0.8rem solid $color-light;
+  transition: all $transition;
 
-  &Down {
+  &-down {
     transform: rotate(-90deg);
   }
 }
 
-@include g.respond("vertical-screen") {
+@include respond("vertical-screen") {
   .selector,
   .option {
-    height: g.$grid-row-height-vertical;
+    height: $grid-row-height-vertical;
   }
 }
 
-@include g.respond("vertical-small-screen") {
+@include respond("vertical-small-screen") {
   .selector,
   .option {
-    height: g.$grid-row-height-vertical-small;
+    height: $grid-row-height-vertical-small;
   }
 }
 
-@include g.respond("horizontal-screen") {
+@include respond("horizontal-screen") {
   .selector,
   .option {
-    @include g.border-radius();
-    height: g.$grid-row-height-horizontal;
-    padding: g.$horizontal-padding-lg;
+    @include border-radius();
+    height: $grid-row-height-horizontal;
+    padding: $horizontal-padding-lg;
   }
   .option:last-child {
-    @include g.border-radius();
+    @include border-radius();
   }
 }

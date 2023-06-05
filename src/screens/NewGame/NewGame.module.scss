@@ -1,103 +1,103 @@
-@use "@/sass/index.scss" as g;
+@import "@/sass/index.scss";
 
 .title {
-  @include g.flex(center, center, column);
-  @include g.grid-position(2, 7, 1, -1);
-  @include g.font-properties(
-    g.$font-secondary,
-    g.$font-size-xl,
-    g.$color-black,
-    g.$font-weight-bold
-  );
+  @include flex(start, center, column);
+  @include grid-position(2, 7, 1, -1);
+  @include font-properties($font-primary, $font-size-lg, $color-dark);
+  margin-left: $font-size-lg;
+
+  span {
+    text-shadow: -0.5rem 0 0 $color-gray;
+  }
 }
 
 .tagline {
-  @include g.flex(center, center);
-  @include g.grid-position(1, 2, 1, -1);
-  @include g.font-properties(g.$font-primary, g.$font-size-md, g.$color-light);
-  background-color: g.$color-gray;
+  @include flex(center, center);
+  @include grid-position(1, 2, 1, -1);
+  @include font-properties($font-primary, $font-size-sm, $color-light);
+  background-color: $color-gray;
 }
 
 .levels {
-  @include g.flex;
-  @include g.grid-position(7, 8, 1, -1);
+  @include flex;
+  @include grid-position(7, 8, 1, -1);
 }
 
 .themes {
-  @include g.grid-position(10, 17, 7, -1);
+  @include grid-position(10, 17, 7, -1);
 }
 
-.themeLabel {
-  @include g.flex(center, end);
-  @include g.grid-position(10, 11, 2, 6);
-  font-size: g.$font-size-md;
-  color: g.$color-black;
+.theme-label {
+  @include flex(center, end);
+  @include grid-position(10, 11, 2, 6);
+  @include font-properties($font-secondary, $font-size-sm, $color-dark);
+  color: $color-dark;
 }
 
-.startBtn {
-  @include g.grid-position(19, 20, 1, 6);
-  @include g.border-radius(0, g.$border-radius, g.$border-radius);
+.start-btn {
+  @include grid-position(19, 20, 1, 6);
+  @include border-radius(0, $border-radius, $border-radius);
 }
 
-.cancelBtn {
-  @include g.size(100%);
-  @include g.grid-position(19, 20, 7, -1);
-  @include g.border-radius(g.$border-radius, 0, 0);
+.cancel-btn {
+  @include size(100%);
+  @include grid-position(19, 20, 7, -1);
+  @include border-radius($border-radius, 0, 0);
 }
 
 .active {
-  background-color: g.$color-brown;
+  color: $color-yellow;
 }
 
 .backdrop {
   display: none;
 }
 
-@include g.respond("horizontal-screen") {
+@include respond("horizontal-screen") {
   .title {
-    @include g.flex;
-    @include g.grid-position(4, 11, 1, 11);
-    color: g.$color-light;
-  }
+    @include flex;
+    @include grid-position(4, 11, 1, 11);
+    color: $color-light;
 
-  .levels {
-    @include g.flex;
-    @include g.grid-position(3, 4, 1, 11);
-  }
-
-  .startBtn {
-    @include g.grid-position(11, 12, 1, 6);
-    @include g.border-radius();
-    @include g.font-properties(
-      g.$font-primary,
-      g.$font-size-md,
-      g.$color-black
-    );
-    background-color: g.$color-light;
-
-    &:hover {
-      color: g.$color-light;
+    span {
+      text-shadow: -0.5rem 0 0 $color-gray;
     }
   }
 
-  .cancelBtn {
-    @include g.grid-position(11, 12, 6, 11);
-    @include g.border-radius();
+  .levels {
+    @include flex;
+    @include grid-position(3, 4, 1, 11);
+  }
+
+  .active {
+    @include color($color-light, $color-dark);
+  }
+
+  .start-btn {
+    @include grid-position(11, 12, 1, 6);
+    @include border-radius();
+    @include font-properties($font-primary, $font-size-sm, $color-dark);
+    background-color: $color-light;
+  }
+
+  .cancel-btn {
+    @include grid-position(11, 12, 6, 11);
+    @include border-radius();
   }
 
   .themes {
-    @include g.grid-position(3, 4, 15, 20);
-    height: g.$grid-row-height-horizontal;
+    @include grid-position(3, 4, 15, 20);
+    height: $grid-row-height-horizontal;
   }
 
-  .themeLabel {
-    @include g.flex(center, end);
-    @include g.grid-position(3, 4, 12, 14);
+  .theme-label {
+    @include flex(center, end);
+    @include grid-position(3, 4, 12, 14);
   }
 
   .backdrop {
-    @include g.grid-position(1, -1, 1, 11);
+    @include grid-position(1, -1, 1, 11);
     display: flex;
-    background-color: g.$color-black;
+    background-color: $color-dark;
   }
 }
