@@ -24,7 +24,7 @@
 
 @include respond("vertical-small-screen") {
   .container {
-    @include size(100%, 95%);
+    @include size(100%, 100%);
     border-radius: 0;
     align-self: start;
   }
