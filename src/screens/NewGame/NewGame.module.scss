@@ -18,11 +18,6 @@
   background-color: $color-gray;
 }
 
-.levels {
-  @include flex;
-  @include grid-position(7, 8, 1, -1);
-}
-
 .themes {
   @include grid-position(10, 17, 7, -1);
 }
@@ -45,10 +40,6 @@
   @include border-radius($border-radius, 0, 0);
 }
 
-.active {
-  color: $color-yellow;
-}
-
 .backdrop {
   display: none;
 }
@@ -62,15 +53,6 @@
     span {
       text-shadow: -0.5rem 0 0 $color-gray;
     }
-  }
-
-  .levels {
-    @include flex;
-    @include grid-position(3, 4, 1, 11);
-  }
-
-  .active {
-    @include color($color-light, $color-dark);
   }
 
   .start-btn {

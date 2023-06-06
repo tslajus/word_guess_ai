@@ -11,3 +11,9 @@
   bottom: 0;
   right: 0;
 }
+
+@include respond("vertical-small-screen") {
+  .background {
+    background-color: $color-light;
+  }
+}

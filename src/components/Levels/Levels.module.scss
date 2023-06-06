@@ -1,0 +1,21 @@
+@import "@/sass/index.scss";
+
+.levels {
+  @include flex;
+  @include grid-position(7, 8, 1, -1);
+}
+
+.active {
+  @include color($color-yellow, $color-dark);
+}
+
+@include respond("horizontal-screen") {
+  .levels {
+    @include flex;
+    @include grid-position(3, 4, 1, 11);
+  }
+
+  .active {
+    @include color($color-light, $color-dark);
+  }
+}

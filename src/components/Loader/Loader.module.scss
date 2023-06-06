@@ -37,3 +37,14 @@
     content: "...";
   }
 }
+
+@include respond("vertical-small-screen") {
+  .loader::after {
+    content: "";
+    background-color: $color-gray;
+    width: 100%;
+    height: calc(100vh - $container-height-vertical-small + 0.5rem);
+    position: absolute;
+    bottom: 0;
+  }
+}

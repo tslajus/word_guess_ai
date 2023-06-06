@@ -2,7 +2,7 @@ import haikus from "@/data/haikus.json";
 import { useState, useContext } from "react";
 import { GameContext } from "@/contexts/GameContext";
 import { extractRandomString } from "@/helpers";
-import { Header, Button, Selection } from "@/components";
+import { Header, Levels, Button, Selection } from "@/components";
 
 import styles from "./NewGame.module.scss";
 
@@ -64,16 +64,11 @@ function NewGame() {
         <span>Game</span>
       </div>
 
-      <div className={styles.levels}>
-        {Object.keys(levels).map((level) => (
-          <Button
-            key={level}
-            className={level === selectedLevel ? styles.active : ""}
-            text={level}
-            onClick={() => setSelectedLevel(level)}
-          />
-        ))}
-      </div>
+      <Levels
+        levels={levels}
+        selectedLevel={selectedLevel}
+        setSelectedLevel={setSelectedLevel}
+      />
 
       <div className={styles["theme-label"]}>THEME:</div>
 

@@ -22,10 +22,6 @@
     &::placeholder {
       color: $color-gray;
     }
-
-    &:focus-visible {
-      @include color($color-yellow, $color-dark);
-    }
   }
 
   button {
