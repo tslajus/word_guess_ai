@@ -30,6 +30,12 @@
   }
 }
 
+@include respond("horizontal-big-screen") {
+  .container {
+    @include size($container-width, 90%);
+  }
+}
+
 @include respond("horizontal-screen") {
   .container {
     @include size(100%, 100%);

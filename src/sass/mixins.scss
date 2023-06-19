@@ -62,8 +62,12 @@
     @media (max-width: 510px) and (orientation: portrait) {
       @content;
     }
+  } @else if $breakpoint == "horizontal-big-screen" {
+    @media (max-height: 800px) and (orientation: landscape) {
+      @content;
+    }
   } @else if $breakpoint == "horizontal-screen" {
-    @media (max-width: 1023px) and (orientation: landscape) {
+    @media (max-height: 750px) and (orientation: landscape) {
       @content;
     }
   }
