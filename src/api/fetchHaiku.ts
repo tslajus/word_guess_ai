@@ -52,7 +52,7 @@ const fetchHaiku = async (
     const response = await axios.post(
       `${import.meta.env.VITE_BASE_URL}/api/chat-completion`,
       {
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
